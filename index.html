@@ -2,133 +2,129 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🎂 Sinh Nhật Đặc Biệt</title>
+<title>🎂 Sinh nhật đặc biệt</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-:root{
-    --hong:#ff4d8d;
-    --hong2:#ff8fb5;
-    --tim:#9b5de5;
-    --vang:#ffd166;
-    --xanh:#56ccf2;
-    --nen:#08030d;
-    --trang:#fff;
+:root {
+    --hong: #ff4d8d;
+    --hong-nhat: #ff9fc1;
+    --tim: #9b5de5;
+    --vang: #ffd166;
+    --nen: #08030d;
 }
 
-html,body{
-    width:100%;
-    min-height:100%;
+html,
+body {
+    min-height: 100%;
 }
 
-body{
-    min-height:100vh;
-    overflow-x:hidden;
-    color:white;
-    font-family:Arial,Helvetica,sans-serif;
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
 
     background:
-        radial-gradient(circle at 15% 15%,rgba(255,77,141,.25),transparent 32%),
-        radial-gradient(circle at 85% 20%,rgba(155,93,229,.22),transparent 32%),
-        radial-gradient(circle at 50% 100%,rgba(86,204,242,.12),transparent 40%),
-        #08030d;
-
-    transition:background 1s ease;
+        radial-gradient(circle at 15% 15%, rgba(255, 77, 141, .25), transparent 32%),
+        radial-gradient(circle at 85% 20%, rgba(155, 93, 229, .20), transparent 32%),
+        linear-gradient(135deg, #08030d, #180719);
 }
 
-/* =====================================================
-   CANVAS
-===================================================== */
+/* =========================
+   CANVAS HIỆU ỨNG
+========================= */
 
-#canvas{
-    position:fixed;
-    inset:0;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-    z-index:50;
+#canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
 }
 
-/* =====================================================
+/* =========================
    MÀN HÌNH MỞ ĐẦU
-===================================================== */
+========================= */
 
-#manHinhMo{
-    position:fixed;
-    inset:0;
-    z-index:1000;
+#manHinhMo {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    padding:20px;
+    padding: 20px;
 
     background:
-        radial-gradient(circle at center,rgba(255,77,141,.2),transparent 40%),
-        linear-gradient(135deg,#100514,#240b2c,#08030d);
+        radial-gradient(circle at center, rgba(255, 77, 141, .18), transparent 40%),
+        linear-gradient(135deg, #100514, #240b2c, #08030d);
 
-    transition:opacity .8s ease,visibility .8s ease;
+    transition: opacity .8s ease, visibility .8s ease;
 }
 
-#manHinhMo.an{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
+#manHinhMo.an {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
-.mo-hop{
-    width:min(92vw,560px);
-    padding:45px 25px;
+.mo-hop {
+    width: min(92vw, 540px);
+    padding: 45px 25px;
 
-    text-align:center;
+    text-align: center;
 
-    border-radius:35px;
+    border-radius: 32px;
 
-    background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,255,255,.15);
+    background: rgba(255, 255, 255, .07);
+    border: 1px solid rgba(255, 255, 255, .14);
 
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 
     box-shadow:
-        0 35px 100px rgba(0,0,0,.6),
-        inset 0 1px rgba(255,255,255,.15);
+        0 30px 90px rgba(0, 0, 0, .6),
+        inset 0 1px rgba(255, 255, 255, .15);
 
-    animation:vaoMo .9s ease;
+    animation: hienHop .8s ease;
 }
 
-@keyframes vaoMo{
-    from{
-        opacity:0;
-        transform:translateY(35px) scale(.9);
+@keyframes hienHop {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.9);
     }
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
 
-.mo-nhan{
-    color:#ffb3cc;
-    font-size:12px;
-    letter-spacing:4px;
-    margin-bottom:15px;
+.mo-nhan {
+    margin-bottom: 15px;
+    color: #ffb3cc;
+    font-size: 13px;
+    letter-spacing: 3px;
 }
 
-.mo-tieu-de{
-    font-size:clamp(40px,10vw,70px);
-    line-height:.98;
-    font-weight:900;
+.mo-tieu-de {
+    font-size: clamp(40px, 10vw, 68px);
+    line-height: .98;
+    font-weight: 900;
 
-    background:linear-gradient(
+    background: linear-gradient(
         90deg,
         #fff,
         #ff8fb5,
@@ -136,41 +132,47 @@ body{
         #fff
     );
 
-    background-size:300%;
+    background-size: 300%;
 
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 
-    animation:mauChu 5s linear infinite;
+    animation: mauChu 5s linear infinite;
 }
 
-@keyframes mauChu{
-    from{background-position:0%}
-    to{background-position:300%}
+@keyframes mauChu {
+    from {
+        background-position: 0%;
+    }
+
+    to {
+        background-position: 300%;
+    }
 }
 
-.mo-mo-ta{
-    margin:20px auto 30px;
-    max-width:420px;
-    color:rgba(255,255,255,.75);
-    line-height:1.8;
+.mo-mo-ta {
+    margin: 20px auto 30px;
+    max-width: 400px;
+
+    color: rgba(255, 255, 255, .75);
+    line-height: 1.8;
 }
 
-/* =====================================================
-   TRÁI TIM
-===================================================== */
+/* =========================
+   TRÁI TIM MỞ QUÀ
+========================= */
 
-#nutMo{
-    position:relative;
+#nutMo {
+    position: relative;
 
-    width:125px;
-    height:125px;
+    width: 120px;
+    height: 120px;
 
-    border:0;
-    border-radius:50%;
+    border: 0;
+    border-radius: 50%;
 
-    cursor:pointer;
+    cursor: pointer;
 
     background:
         radial-gradient(
@@ -183,194 +185,210 @@ body{
 
     box-shadow:
         0 0 20px #ff4d8d,
-        0 0 70px rgba(255,77,141,.65),
-        inset 0 10px 20px rgba(255,255,255,.35);
+        0 0 70px rgba(255, 77, 141, .7),
+        inset 0 10px 20px rgba(255, 255, 255, .35);
 
-    animation:dapTim 1.5s infinite;
-    
-    -webkit-tap-highlight-color:transparent;
+    animation: dapTim 1.5s infinite;
+
+    /* Quan trọng: nút nằm trên canvas */
+    z-index: 20;
+
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
-#nutMo::after{
-    content:"❤";
-    font-size:65px;
-    color:white;
-    text-shadow:0 5px 15px rgba(0,0,0,.4);
+#nutMo::after {
+    content: "❤";
+
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 60px;
+
+    text-shadow: 0 5px 15px rgba(0, 0, 0, .4);
+
+    pointer-events: none;
 }
 
-#nutMo:hover{
-    filter:brightness(1.15);
+@keyframes dapTim {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.12);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.08);
+    }
+
+    60% {
+        transform: scale(1);
+    }
 }
 
-#nutMo:active{
-    transform:scale(.9);
+.huong-dan {
+    margin-top: 20px;
+    color: #ffc2d6;
+    font-size: 14px;
+    animation: nhapNhay 1.8s infinite;
 }
 
-@keyframes dapTim{
-    0%,100%{transform:scale(1)}
-    15%{transform:scale(1.12)}
-    30%{transform:scale(1)}
-    45%{transform:scale(1.08)}
-    60%{transform:scale(1)}
+@keyframes nhapNhay {
+    50% {
+        opacity: .35;
+    }
 }
 
-.huong-dan{
-    margin-top:22px;
-    color:#ffc2d6;
-    font-size:14px;
-    animation:nhapNhay 1.8s infinite;
+/* =========================
+   ỨNG DỤNG CHÍNH
+========================= */
+
+#ungDung {
+    position: relative;
+    z-index: 10;
+
+    min-height: 100vh;
+    padding: 20px 15px 60px;
+
+    opacity: 0;
+    transform: scale(.97);
+
+    transition: opacity 1s ease, transform 1s ease;
 }
 
-@keyframes nhapNhay{
-    50%{opacity:.35}
+#ungDung.hien {
+    opacity: 1;
+    transform: scale(1);
 }
 
-/* =====================================================
-   ỨNG DỤNG
-===================================================== */
+.thanh-cong-cu {
+    width: min(1050px, 100%);
+    margin: auto;
 
-#ungDung{
-    position:relative;
-    z-index:10;
-
-    width:100%;
-    min-height:100vh;
-
-    padding:20px 15px 70px;
-
-    opacity:0;
-    transform:scale(.97);
-
-    transition:opacity 1s ease,transform 1s ease;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
-#ungDung.hien{
-    opacity:1;
-    transform:scale(1);
+.nut-icon {
+    width: 44px;
+    height: 44px;
+
+    border: 1px solid rgba(255, 255, 255, .15);
+    border-radius: 50%;
+
+    color: white;
+    background: rgba(255, 255, 255, .08);
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    transition: .25s;
 }
 
-/* =====================================================
-   THANH CÔNG CỤ
-===================================================== */
-
-.thanh-cong-cu{
-    width:min(1100px,100%);
-    margin:auto;
-
-    display:flex;
-    justify-content:flex-end;
-    gap:8px;
-    flex-wrap:wrap;
+.nut-icon:hover {
+    transform: translateY(-3px) scale(1.06);
+    background: rgba(255, 255, 255, .18);
 }
 
-.nut-icon{
-    width:45px;
-    height:45px;
+/* =========================
+   THẺ CHÍNH
+========================= */
 
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:50%;
+.the {
+    position: relative;
 
-    color:white;
-    background:rgba(255,255,255,.08);
+    width: min(1050px, 100%);
+    margin: 20px auto;
+    padding: clamp(25px, 6vw, 60px) clamp(18px, 5vw, 55px);
 
-    cursor:pointer;
+    overflow: hidden;
 
-    backdrop-filter:blur(10px);
-
-    transition:.25s;
-
-    -webkit-tap-highlight-color:transparent;
-}
-
-.nut-icon:hover{
-    transform:translateY(-3px) scale(1.07);
-    background:rgba(255,255,255,.18);
-}
-
-/* =====================================================
-   THẺ
-===================================================== */
-
-.the{
-    position:relative;
-
-    width:min(1050px,100%);
-    margin:20px auto;
-
-    padding:clamp(25px,6vw,60px) clamp(18px,5vw,55px);
-
-    overflow:hidden;
-
-    border-radius:38px;
+    border-radius: 35px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,.12),
-            rgba(255,255,255,.035)
+            rgba(255, 255, 255, .12),
+            rgba(255, 255, 255, .035)
         );
 
-    border:1px solid rgba(255,255,255,.14);
+    border: 1px solid rgba(255, 255, 255, .14);
 
     box-shadow:
-        0 35px 100px rgba(0,0,0,.42),
-        inset 0 1px rgba(255,255,255,.14);
+        0 35px 100px rgba(0, 0, 0, .42),
+        inset 0 1px rgba(255, 255, 255, .14);
 
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
+    backdrop-filter: blur(20px);
 }
 
-.the::before{
-    content:"";
-    position:absolute;
+.the::before {
+    content: "";
 
-    width:300px;
-    height:300px;
+    position: absolute;
 
-    border-radius:50%;
+    width: 300px;
+    height: 300px;
 
-    background:#ff4d8d;
-    filter:blur(120px);
-    opacity:.14;
+    left: -140px;
+    top: -140px;
 
-    left:-140px;
-    top:-140px;
+    border-radius: 50%;
+
+    background: #ff4d8d;
+    filter: blur(120px);
+    opacity: .14;
 }
 
-.the::after{
-    content:"";
-    position:absolute;
+.the::after {
+    content: "";
 
-    width:300px;
-    height:300px;
+    position: absolute;
 
-    border-radius:50%;
+    width: 300px;
+    height: 300px;
 
-    background:#9b5de5;
-    filter:blur(120px);
-    opacity:.14;
+    right: -140px;
+    bottom: -140px;
 
-    right:-140px;
-    bottom:-140px;
+    border-radius: 50%;
+
+    background: #9b5de5;
+    filter: blur(120px);
+    opacity: .14;
 }
 
-.noi-dung{
-    position:relative;
-    z-index:2;
-    text-align:center;
+.noi-dung {
+    position: relative;
+    z-index: 2;
+    text-align: center;
 }
 
-.loi-chuc-nho{
-    color:#ffb1ca;
-    font-size:clamp(12px,3vw,19px);
-    letter-spacing:2px;
-    margin-bottom:12px;
+.loi-chuc-nho {
+    margin-bottom: 12px;
+    color: #ffb1ca;
+
+    font-size: clamp(12px, 3vw, 18px);
+    letter-spacing: 2px;
 }
 
-.tieu-de{
-    font-size:clamp(40px,10vw,92px);
-    line-height:.95;
-    font-weight:900;
+.tieu-de {
+    font-size: clamp(40px, 10vw, 90px);
+    line-height: .95;
+    font-weight: 900;
 
     background:
         linear-gradient(
@@ -381,105 +399,99 @@ body{
             #fff
         );
 
-    background-size:300%;
+    background-size: 300%;
 
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 
-    animation:mauChu 6s linear infinite;
+    animation: mauChu 6s linear infinite;
 }
 
-.ten{
-    margin-top:20px;
+.ten {
+    margin-top: 20px;
 
-    color:#ffd166;
-
-    font-size:clamp(22px,5vw,42px);
-
-    font-weight:800;
+    color: #ffd166;
+    font-size: clamp(22px, 5vw, 42px);
+    font-weight: 800;
 
     text-shadow:
-        0 0 12px rgba(255,209,102,.6),
-        0 0 35px rgba(255,209,102,.25);
+        0 0 12px rgba(255, 209, 102, .6),
+        0 0 35px rgba(255, 209, 102, .25);
 }
 
-.cau-chuc{
-    max-width:730px;
-    margin:20px auto 0;
+.cau-chuc {
+    max-width: 730px;
+    margin: 20px auto 0;
 
-    color:rgba(255,255,255,.78);
-
-    font-size:clamp(14px,2.8vw,18px);
-    line-height:1.8;
+    color: rgba(255, 255, 255, .78);
+    font-size: clamp(14px, 2.8vw, 18px);
+    line-height: 1.8;
 }
 
-/* =====================================================
+/* =========================
    BÁNH
-===================================================== */
+========================= */
 
-.banh{
-    position:relative;
+.banh {
+    position: relative;
 
-    width:220px;
-    height:145px;
+    width: 220px;
+    height: 145px;
 
-    margin:25px auto 10px;
+    margin: 30px auto 10px;
 
-    cursor:pointer;
+    cursor: pointer;
 
-    transition:.3s;
+    transition: transform .3s;
 }
 
-.banh:hover{
-    transform:scale(1.05);
+.banh:hover {
+    transform: scale(1.05);
 }
 
-.tang-banh{
-    position:absolute;
+.tang-banh {
+    position: absolute;
 
-    width:100%;
-    height:72px;
+    left: 0;
+    bottom: 0;
 
-    bottom:0;
-    left:0;
+    width: 100%;
+    height: 72px;
 
-    border-radius:15px 15px 22px 22px;
+    border-radius: 15px 15px 22px 22px;
 
-    background:linear-gradient(#ff9cbb,#d92868);
+    background: linear-gradient(#ff9cbb, #d92868);
 
     box-shadow:
-        inset 0 -10px 20px rgba(0,0,0,.18),
-        0 20px 45px rgba(0,0,0,.3);
+        inset 0 -10px 20px rgba(0, 0, 0, .18),
+        0 20px 45px rgba(0, 0, 0, .3);
 }
 
-.kem{
-    position:absolute;
+.kem {
+    position: absolute;
 
-    width:100%;
-    height:24px;
+    left: 0;
+    bottom: 55px;
 
-    left:0;
-    bottom:55px;
+    width: 100%;
+    height: 24px;
 
-    border-radius:15px;
+    border-radius: 15px;
 
-    background:#fff3f7;
-
-    z-index:3;
+    background: #fff3f7;
+    z-index: 3;
 }
 
-.nen{
-    position:absolute;
+.nen {
+    position: absolute;
 
-    bottom:69px;
+    bottom: 69px;
 
-    width:13px;
-    height:50px;
+    width: 13px;
+    height: 50px;
 
-    z-index:4;
-
-    border-radius:8px;
+    border-radius: 8px;
 
     background:
         repeating-linear-gradient(
@@ -487,101 +499,109 @@ body{
             #fff 0 5px,
             #ff70a0 5px 10px
         );
+
+    z-index: 4;
 }
 
-.nen:nth-child(1){left:47px}
-.nen:nth-child(2){left:103px}
-.nen:nth-child(3){left:159px}
+.nen:nth-child(1) {
+    left: 47px;
+}
 
-.lua{
-    position:absolute;
+.nen:nth-child(2) {
+    left: 103px;
+}
 
-    width:14px;
-    height:20px;
+.nen:nth-child(3) {
+    left: 159px;
+}
 
-    left:0;
-    top:-21px;
+.lua {
+    position: absolute;
 
-    border-radius:50% 50% 50% 0;
+    left: 0;
+    top: -21px;
 
-    background:#ffd166;
+    width: 14px;
+    height: 20px;
 
-    transform:rotate(-45deg);
+    border-radius: 50% 50% 50% 0;
+
+    background: #ffd166;
+
+    transform: rotate(-45deg);
 
     box-shadow:
         0 0 15px #ffd166,
         0 0 30px #ff8c00;
 
-    animation:lua 1s alternate infinite;
+    animation: lua .7s alternate infinite;
 }
 
-@keyframes lua{
-    to{
-        transform:rotate(-45deg) scale(1.18);
+@keyframes lua {
+    to {
+        transform: rotate(-45deg) scale(1.2);
     }
 }
 
-/* =====================================================
+/* =========================
    ĐẾM NGƯỢC
-===================================================== */
+========================= */
 
-.dem-nguoc{
-    width:min(650px,100%);
-    margin:30px auto 0;
+.dem-nguoc {
+    width: min(650px, 100%);
+    margin: 30px auto 0;
 
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-
-    gap:8px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
 }
 
-.o-dem{
-    padding:15px 5px;
+.o-dem {
+    padding: 15px 5px;
 
-    border-radius:18px;
+    border-radius: 18px;
 
-    background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,255,255,.1);
+    background: rgba(255, 255, 255, .07);
+    border: 1px solid rgba(255, 255, 255, .1);
 }
 
-.so{
-    display:block;
+.so {
+    display: block;
 
-    color:white;
-
-    font-size:clamp(24px,6vw,40px);
-    font-weight:900;
+    color: white;
+    font-size: clamp(24px, 6vw, 40px);
+    font-weight: 900;
 }
 
-.nhan-dem{
-    display:block;
-    margin-top:5px;
+.nhan-dem {
+    display: block;
 
-    color:#ffabc6;
-    font-size:11px;
+    margin-top: 5px;
+
+    color: #ffabc6;
+    font-size: 11px;
 }
 
-/* =====================================================
+/* =========================
    NÚT
-===================================================== */
+========================= */
 
-.khu-nut{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
+.khu-nut {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 
-    gap:10px;
-
-    margin-top:30px;
+    gap: 10px;
+    margin-top: 30px;
 }
 
-.nut{
-    border:0;
-    border-radius:999px;
+.nut {
+    border: 0;
+    border-radius: 999px;
 
-    padding:13px 20px;
+    padding: 13px 20px;
 
-    color:white;
+    color: white;
 
     background:
         linear-gradient(
@@ -590,143 +610,134 @@ body{
             #c9185b
         );
 
-    cursor:pointer;
+    cursor: pointer;
 
-    font-weight:800;
-
-    box-shadow:
-        0 8px 25px rgba(255,77,141,.25);
-
-    transition:.25s;
-
-    -webkit-tap-highlight-color:transparent;
-}
-
-.nut:hover{
-    transform:translateY(-3px);
+    font-weight: 800;
 
     box-shadow:
-        0 12px 32px rgba(255,77,141,.4);
+        0 8px 25px rgba(255, 77, 141, .25);
+
+    transition: .25s;
 }
 
-.nut:active{
-    transform:scale(.95);
+.nut:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 12px 32px rgba(255, 77, 141, .4);
 }
 
-/* =====================================================
-   KHỐI
-===================================================== */
-
-.luoi{
-    width:min(1050px,100%);
-    margin:20px auto;
-
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-
-    gap:18px;
+.nut:active {
+    transform: scale(.95);
 }
 
-.khoi{
-    padding:25px;
+/* =========================
+   CÁC KHỐI
+========================= */
 
-    border-radius:25px;
+.luoi {
+    width: min(1050px, 100%);
+    margin: 20px auto;
 
-    background:rgba(255,255,255,.065);
-
-    border:1px solid rgba(255,255,255,.1);
-
-    backdrop-filter:blur(15px);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
 }
 
-.khoi h2{
-    color:#ff9fbe;
-    font-size:20px;
-    margin-bottom:12px;
+.khoi {
+    padding: 25px;
+
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, .065);
+    border: 1px solid rgba(255, 255, 255, .1);
+
+    backdrop-filter: blur(15px);
 }
 
-.khoi p{
-    color:rgba(255,255,255,.75);
-    line-height:1.75;
+.khoi h2 {
+    margin-bottom: 12px;
+    color: #ff9fbe;
+    font-size: 20px;
 }
 
-/* =====================================================
+.khoi p {
+    color: rgba(255, 255, 255, .75);
+    line-height: 1.75;
+}
+
+/* =========================
    ÂM THANH
-===================================================== */
+========================= */
 
-.khoi-am-thanh{
-    width:min(650px,100%);
-    margin:20px auto;
+.khoi-am-thanh {
+    width: min(650px, 100%);
+    margin: 20px auto;
+    padding: 22px;
 
-    padding:22px;
+    border-radius: 24px;
 
-    border-radius:24px;
+    background: rgba(255, 255, 255, .065);
+    border: 1px solid rgba(255, 255, 255, .1);
 
-    background:rgba(255,255,255,.065);
-
-    border:1px solid rgba(255,255,255,.1);
-
-    backdrop-filter:blur(15px);
+    backdrop-filter: blur(15px);
 }
 
-.khoi-am-thanh h3{
-    color:#ff9fbe;
-    margin-bottom:15px;
+.khoi-am-thanh h3 {
+    margin-bottom: 15px;
+    color: #ff9fbe;
 }
 
-.am-hang{
-    margin-top:15px;
+.am-hang {
+    margin-top: 15px;
 }
 
-.am-hang label{
-    display:block;
-    margin-bottom:7px;
+.am-hang label {
+    display: block;
+    margin-bottom: 7px;
 
-    color:rgba(255,255,255,.72);
-    font-size:14px;
+    color: rgba(255, 255, 255, .72);
+    font-size: 14px;
 }
 
-.am-hang input{
-    width:100%;
-    accent-color:#ff4d8d;
-    cursor:pointer;
+.am-hang input {
+    width: 100%;
+    accent-color: #ff4d8d;
 }
 
-/* =====================================================
+/* =========================
    MODAL
-===================================================== */
+========================= */
 
-.modal{
-    position:fixed;
-    inset:0;
+.modal {
+    position: fixed;
+    inset: 0;
 
-    z-index:2000;
+    z-index: 2000;
 
-    display:none;
+    display: none;
+    align-items: center;
+    justify-content: center;
 
-    align-items:center;
-    justify-content:center;
+    padding: 20px;
 
-    padding:20px;
+    background: rgba(0, 0, 0, .72);
 
-    background:rgba(0,0,0,.75);
-
-    backdrop-filter:blur(10px);
+    backdrop-filter: blur(10px);
 }
 
-.modal.mo{
-    display:flex;
+.modal.mo {
+    display: flex;
 }
 
-.modal-box{
-    width:min(620px,100%);
-    max-height:90vh;
+.modal-box {
+    width: min(600px, 100%);
+    max-height: 90vh;
 
-    overflow-y:auto;
+    overflow-y: auto;
 
-    padding:30px;
+    padding: 30px;
 
-    border-radius:27px;
+    border-radius: 27px;
 
     background:
         linear-gradient(
@@ -735,165 +746,161 @@ body{
             #15081e
         );
 
-    border:1px solid rgba(255,255,255,.15);
+    border: 1px solid rgba(255, 255, 255, .15);
 
     box-shadow:
-        0 30px 100px rgba(0,0,0,.65);
+        0 30px 100px rgba(0, 0, 0, .65);
 
-    animation:modalVao .35s ease;
+    animation: modalVao .35s ease;
 }
 
-@keyframes modalVao{
-    from{
-        opacity:0;
-        transform:scale(.85) translateY(20px);
+@keyframes modalVao {
+    from {
+        opacity: 0;
+        transform: scale(.85) translateY(20px);
     }
 
-    to{
-        opacity:1;
-        transform:scale(1) translateY(0);
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
     }
 }
 
-.modal-box h2{
-    color:#ff9fbe;
-    margin-bottom:15px;
+.modal-box h2 {
+    margin-bottom: 15px;
+    color: #ff9fbe;
 }
 
-.modal-box p{
-    color:rgba(255,255,255,.82);
-    line-height:1.8;
+.modal-box p {
+    color: rgba(255, 255, 255, .82);
+    line-height: 1.8;
 }
 
-.modal-dong{
-    display:flex;
-    justify-content:flex-end;
-    margin-top:20px;
+.modal-dong {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
 }
 
 input[type="text"],
-textarea{
-    width:100%;
+textarea {
+    width: 100%;
 
-    margin-top:10px;
+    margin-top: 10px;
+    padding: 14px;
 
-    padding:14px;
+    border: 1px solid rgba(255, 255, 255, .15);
+    border-radius: 15px;
 
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:15px;
+    outline: none;
 
-    outline:none;
+    color: white;
+    background: rgba(255, 255, 255, .07);
 
-    color:white;
-
-    background:rgba(255,255,255,.07);
-
-    font-family:inherit;
+    font-family: inherit;
 }
 
-input:focus,
-textarea:focus{
-    border-color:#ff70a0;
-
-    box-shadow:
-        0 0 20px rgba(255,77,141,.15);
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #ff70a0;
+    box-shadow: 0 0 20px rgba(255, 77, 141, .15);
 }
 
-/* =====================================================
-   BẤT NGỜ
-===================================================== */
+footer {
+    margin-top: 40px;
 
-.bat-ngo{
-    text-align:center;
+    text-align: center;
+
+    color: rgba(255, 255, 255, .4);
+    font-size: 13px;
 }
 
-.bat-ngo-icon{
-    font-size:75px;
-    margin-bottom:15px;
+/* =========================
+   HIỆU ỨNG BẤT NGỜ
+========================= */
 
-    animation:nay 1.5s infinite;
+.bat-ngo {
+    text-align: center;
 }
 
-@keyframes nay{
-    0%,100%{
-        transform:rotate(0) scale(1);
+.bat-ngo-icon {
+    font-size: 70px;
+    animation: nhayQua 1s infinite;
+}
+
+@keyframes nhayQua {
+    0%, 100% {
+        transform: translateY(0) rotate(0);
     }
 
-    25%{
-        transform:rotate(-8deg) scale(1.05);
+    25% {
+        transform: translateY(-10px) rotate(-5deg);
     }
 
-    75%{
-        transform:rotate(8deg) scale(1.05);
+    75% {
+        transform: translateY(-10px) rotate(5deg);
     }
 }
 
-.bat-ngo-tieu-de{
-    color:#ffd166 !important;
-    font-size:30px;
+.chu-lon {
+    margin-top: 15px;
+
+    color: #ffd166;
+    font-size: clamp(24px, 6vw, 42px);
+    font-weight: 900;
+
+    text-shadow: 0 0 20px rgba(255, 209, 102, .5);
 }
 
-.bat-ngo-chu{
-    margin-top:10px;
-    font-size:17px;
-}
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer{
-    text-align:center;
-    margin-top:40px;
-
-    color:rgba(255,255,255,.4);
-    font-size:13px;
-}
-
-/* =====================================================
+/* =========================
    RESPONSIVE
-===================================================== */
+========================= */
 
-@media(max-width:650px){
+@media (max-width: 650px) {
 
-    #ungDung{
-        padding:12px 10px 60px;
+    #ungDung {
+        padding: 12px 10px 60px;
     }
 
-    .the{
-        border-radius:25px;
+    .luoi {
+        grid-template-columns: 1fr;
     }
 
-    .luoi{
-        grid-template-columns:1fr;
+    .the {
+        border-radius: 25px;
     }
 
-    .dem-nguoc{
-        gap:5px;
+    .dem-nguoc {
+        gap: 5px;
     }
 
-    .o-dem{
-        padding:12px 3px;
+    .o-dem {
+        padding: 12px 3px;
     }
 
-    .nut{
-        padding:11px 15px;
-        font-size:13px;
+    .nut {
+        padding: 11px 15px;
+        font-size: 13px;
     }
 }
 
-@media(max-width:390px){
+@media (max-width: 390px) {
 
-    .dem-nguoc{
-        grid-template-columns:repeat(2,1fr);
+    .dem-nguoc {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .khu-nut{
-        flex-direction:column;
+    .khu-nut {
+        flex-direction: column;
     }
 
-    .khu-nut .nut{
-        width:100%;
+    .khu-nut .nut {
+        width: 100%;
+    }
+
+    #nutMo {
+        width: 105px;
+        height: 105px;
     }
 }
 </style>
@@ -903,9 +910,9 @@ footer{
 
 <canvas id="canvas"></canvas>
 
-<!-- =====================================================
-     MÀN HÌNH MỞ
-===================================================== -->
+<!-- =========================
+     MÀN HÌNH MỞ ĐẦU
+========================= -->
 
 <section id="manHinhMo">
 
@@ -926,11 +933,8 @@ footer{
             và thật nhiều bất ngờ đang chờ bạn.
         </p>
 
-        <button
-            id="nutMo"
-            type="button"
-            aria-label="Mở món quà">
-        </button>
+        <!-- NÚT NÀY LÀ NÚT MỞ QUÀ -->
+        <button id="nutMo" type="button" aria-label="Mở món quà"></button>
 
         <div class="huong-dan">
             💗 Chạm vào trái tim để mở quà 💗
@@ -940,10 +944,9 @@ footer{
 
 </section>
 
-
-<!-- =====================================================
+<!-- =========================
      ỨNG DỤNG
-===================================================== -->
+========================= -->
 
 <main id="ungDung">
 
@@ -971,10 +974,9 @@ footer{
 
     </div>
 
-
-    <!-- =================================================
-         THẺ CHÍNH
-    ================================================= -->
+    <!-- =========================
+         THẺ SINH NHẬT
+    ========================= -->
 
     <section class="the">
 
@@ -994,17 +996,14 @@ footer{
             </div>
 
             <p class="cau-chuc">
-
                 Chúc bạn có một tuổi mới thật rực rỡ,
                 luôn vui vẻ, bình an, may mắn và đạt được
                 tất cả những điều mà trái tim mình mong ước. 💖
-
             </p>
-
 
             <!-- BÁNH -->
 
-            <div class="banh" title="Chạm vào bánh 🎂">
+            <div class="banh" title="Chạm vào bánh">
 
                 <div class="nen">
                     <div class="lua"></div>
@@ -1019,11 +1018,9 @@ footer{
                 </div>
 
                 <div class="kem"></div>
-
                 <div class="tang-banh"></div>
 
             </div>
-
 
             <!-- ĐẾM NGƯỢC -->
 
@@ -1051,7 +1048,6 @@ footer{
 
             </div>
 
-
             <!-- NÚT -->
 
             <div class="khu-nut">
@@ -1078,22 +1074,16 @@ footer{
 
     </section>
 
-
-    <!-- =================================================
+    <!-- =========================
          ÂM THANH
-    ================================================= -->
+    ========================= -->
 
     <section class="khoi-am-thanh">
 
-        <h3>
-            🎵 Trung tâm âm thanh
-        </h3>
+        <h3>🎵 Trung tâm âm thanh</h3>
 
         <div class="am-hang">
-
-            <label>
-                🔊 Âm lượng hiệu ứng
-            </label>
+            <label>🔊 Âm lượng hiệu ứng</label>
 
             <input
                 id="amLuongHieuUng"
@@ -1101,15 +1091,12 @@ footer{
                 min="0"
                 max="1"
                 step=".01"
-                value=".45">
-
+                value=".45"
+            >
         </div>
 
         <div class="am-hang">
-
-            <label>
-                🎵 Âm lượng nhạc nền
-            </label>
+            <label>🎵 Âm lượng nhạc nền</label>
 
             <input
                 id="amLuongNhac"
@@ -1117,24 +1104,21 @@ footer{
                 min="0"
                 max="1"
                 step=".01"
-                value=".12">
-
+                value=".12"
+            >
         </div>
 
     </section>
 
-
-    <!-- =================================================
+    <!-- =========================
          CÁC KHỐI
-    ================================================= -->
+    ========================= -->
 
     <section class="luoi">
 
         <div class="khoi">
 
-            <h2>
-                💖 Một lời nhắn dành cho bạn
-            </h2>
+            <h2>💖 Một lời nhắn dành cho bạn</h2>
 
             <p>
                 Cuộc sống giống như một bầu trời đầy sao.
@@ -1146,12 +1130,9 @@ footer{
 
         </div>
 
-
         <div class="khoi">
 
-            <h2>
-                🌟 Điều ước hôm nay
-            </h2>
+            <h2>🌟 Điều ước hôm nay</h2>
 
             <p id="dieuUoc">
                 Hãy nhắm mắt lại,
@@ -1159,49 +1140,33 @@ footer{
             </p>
 
             <div style="margin-top:15px">
-
-                <button
-                    class="nut"
-                    id="nutUoc2"
-                    type="button">
+                <button class="nut" id="nutUoc2" type="button">
                     ✨ Gửi điều ước
                 </button>
-
             </div>
 
         </div>
 
-
         <div class="khoi">
 
-            <h2>
-                🎆 Pháo hoa
-            </h2>
+            <h2>🎆 Pháo hoa</h2>
 
             <p>
-                Chạm nút để biến màn hình thành
+                Bấm nút để biến màn hình thành
                 một bầu trời pháo hoa.
             </p>
 
             <div style="margin-top:15px">
-
-                <button
-                    class="nut"
-                    id="nutPhaoHoa2"
-                    type="button">
+                <button class="nut" id="nutPhaoHoa2" type="button">
                     🎆 Bắn pháo hoa
                 </button>
-
             </div>
 
         </div>
 
-
         <div class="khoi">
 
-            <h2>
-                🎂 Chiếc bánh
-            </h2>
+            <h2>🎂 Chiếc bánh</h2>
 
             <p>
                 Chạm vào chiếc bánh để thổi nến
@@ -1212,17 +1177,15 @@ footer{
 
     </section>
 
-
     <footer>
         Được tạo bằng ❤️ cho một ngày thật đặc biệt.
     </footer>
 
 </main>
 
-
-<!-- =====================================================
+<!-- =========================
      MODAL CHUNG
-===================================================== -->
+========================= -->
 
 <div class="modal" id="modal">
 
@@ -1238,10 +1201,7 @@ footer{
 
         <div class="modal-dong">
 
-            <button
-                class="nut"
-                id="nutDongModal"
-                type="button">
+            <button class="nut" id="nutDongModal" type="button">
                 Đóng lại
             </button>
 
@@ -1251,35 +1211,30 @@ footer{
 
 </div>
 
-
-<!-- =====================================================
-     MODAL TÊN
-===================================================== -->
+<!-- =========================
+     MODAL ĐỔI TÊN
+========================= -->
 
 <div class="modal" id="modalTen">
 
     <div class="modal-box">
 
-        <h2>
-            ✏️ Nhập tên
-        </h2>
+        <h2>✏️ Đổi tên</h2>
 
         <p>
-            Tên sẽ được lưu lại trên trình duyệt.
+            Nhập tên bạn muốn hiển thị.
         </p>
 
         <input
             id="oTen"
             type="text"
             maxlength="40"
-            placeholder="Nhập tên ở đây...">
+            placeholder="Nhập tên ở đây..."
+        >
 
         <div class="modal-dong">
 
-            <button
-                class="nut"
-                id="nutLuuTen"
-                type="button">
+            <button class="nut" id="nutLuuTen" type="button">
                 💖 Lưu tên
             </button>
 
@@ -1289,154 +1244,113 @@ footer{
 
 </div>
 
-
-<!-- =====================================================
-     SCRIPT
-===================================================== -->
-
 <script>
+/* =========================================================
+   LẤY CÁC PHẦN TỬ
+========================================================= */
 
-"use strict";
-
-/* =====================================================
-   HÀM LẤY DOM AN TOÀN
-===================================================== */
-
-const $ = id => document.getElementById(id);
-
-const canvas = $("canvas");
+const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-const manHinhMo = $("manHinhMo");
-const ungDung = $("ungDung");
-const nutMo = $("nutMo");
+const manHinhMo = document.getElementById("manHinhMo");
+const ungDung = document.getElementById("ungDung");
+const nutMo = document.getElementById("nutMo");
 
-const modal = $("modal");
-const modalTen = $("modalTen");
+const modal = document.getElementById("modal");
+const modalTen = document.getElementById("modalTen");
 
-const tenHienThi = $("tenHienThi");
-const dieuUoc = $("dieuUoc");
+const tenHienThi = document.getElementById("tenHienThi");
+const dieuUoc = document.getElementById("dieuUoc");
+
+let rong = window.innerWidth;
+let cao = window.innerHeight;
 
 
-/* =====================================================
+/* =========================================================
    CANVAS
-===================================================== */
+========================================================= */
 
-let W = window.innerWidth;
-let H = window.innerHeight;
-let DPR = Math.min(window.devicePixelRatio || 1,2);
+function resizeCanvas() {
 
-function resizeCanvas(){
+    rong = window.innerWidth;
+    cao = window.innerHeight;
 
-    W = window.innerWidth;
-    H = window.innerHeight;
+    const tiLe = Math.min(window.devicePixelRatio || 1, 2);
 
-    DPR = Math.min(
-        window.devicePixelRatio || 1,
-        2
-    );
+    canvas.width = rong * tiLe;
+    canvas.height = cao * tiLe;
 
-    canvas.width = W * DPR;
-    canvas.height = H * DPR;
+    canvas.style.width = rong + "px";
+    canvas.style.height = cao + "px";
 
-    canvas.style.width = W + "px";
-    canvas.style.height = H + "px";
-
-    ctx.setTransform(
-        DPR,
-        0,
-        0,
-        DPR,
-        0,
-        0
-    );
+    ctx.setTransform(tiLe, 0, 0, tiLe, 0, 0);
 }
 
 resizeCanvas();
 
-window.addEventListener(
-    "resize",
-    resizeCanvas
-);
+window.addEventListener("resize", resizeCanvas);
 
 
-/* =====================================================
+/* =========================================================
    SAO
-===================================================== */
+========================================================= */
 
-let hat = [];
+const sao = [];
 
-function taoHat(){
+function taoSao() {
 
-    hat = [];
+    sao.length = 0;
 
     const soLuong = Math.min(
-        180,
-        Math.floor(W * H / 8500)
+        150,
+        Math.floor(rong * cao / 9000)
     );
 
-    for(let i=0;i<soLuong;i++){
+    for (let i = 0; i < soLuong; i++) {
 
-        hat.push({
-
-            x:Math.random()*W,
-
-            y:Math.random()*H,
-
-            r:Math.random()*1.8+.4,
-
-            speed:Math.random()*.35+.08,
-
-            phase:Math.random()*Math.PI*2
-
+        sao.push({
+            x: Math.random() * rong,
+            y: Math.random() * cao,
+            r: Math.random() * 1.7 + .4,
+            tocDo: Math.random() * .3 + .08,
+            pha: Math.random() * Math.PI * 2
         });
     }
 }
 
-taoHat();
+taoSao();
 
 
-/* =====================================================
+/* =========================================================
    TIM BAY
-===================================================== */
+========================================================= */
 
-let timBay = [];
+const timBay = [];
 
-function taoTim(
-    x = Math.random()*W,
-    y = H+20
-){
+function taoTim(x = Math.random() * rong, y = cao + 20) {
 
     timBay.push({
-
-        x:x,
-
-        y:y,
-
-        size:Math.random()*15+8,
-
-        speed:Math.random()*1.8+.8,
-
-        drift:(Math.random()-.5)*.8,
-
-        alpha:1,
-
-        rotation:Math.random()*Math.PI*2
-
+        x: x,
+        y: y,
+        kichThuoc: Math.random() * 15 + 8,
+        tocDo: Math.random() * 1.7 + .8,
+        lech: (Math.random() - .5) * .8,
+        mo: 1,
+        xoay: Math.random() * Math.PI * 2
     });
 }
 
 
-/* =====================================================
+/* =========================================================
    PHÁO HOA
-===================================================== */
+========================================================= */
 
-let phaoHoa = [];
+const phaoHoa = [];
 
 function taoPhaoHoa(
-    x = Math.random()*W,
-    y = Math.random()*H*.55
-){
+    x = Math.random() * rong,
+    y = Math.random() * cao * .55
+) {
 
     const mau = [
         "#ff4d8d",
@@ -1447,141 +1361,105 @@ function taoPhaoHoa(
         "#00f5d4"
     ];
 
-    const color =
-        mau[Math.floor(Math.random()*mau.length)];
+    const mauChon = mau[
+        Math.floor(Math.random() * mau.length)
+    ];
 
-    for(let i=0;i<80;i++){
+    for (let i = 0; i < 70; i++) {
 
-        const angle =
-            Math.random()*Math.PI*2;
-
-        const speed =
-            Math.random()*5+1.5;
+        const goc = Math.random() * Math.PI * 2;
+        const tocDo = Math.random() * 5 + 1.5;
 
         phaoHoa.push({
+            x: x,
+            y: y,
 
-            x:x,
+            vx: Math.cos(goc) * tocDo,
+            vy: Math.sin(goc) * tocDo,
 
-            y:y,
-
-            vx:Math.cos(angle)*speed,
-
-            vy:Math.sin(angle)*speed,
-
-            alpha:1,
-
-            color:color,
-
-            size:Math.random()*2+1
-
+            mo: 1,
+            mau: mauChon,
+            kichThuoc: Math.random() * 2 + 1
         });
     }
 }
 
 
-/* =====================================================
-   ANIMATION
-===================================================== */
+/* =========================================================
+   VÒNG LẶP HIỆU ỨNG
+========================================================= */
 
-function animate(){
+function chayHieuUng() {
 
-    ctx.clearRect(
-        0,
-        0,
-        W,
-        H
-    );
+    ctx.clearRect(0, 0, rong, cao);
 
-    const now = performance.now();
-
+    const hienTai = performance.now();
 
     /* SAO */
 
-    for(const h of hat){
+    for (const s of sao) {
 
-        h.y -= h.speed;
+        s.y -= s.tocDo;
 
-        if(h.y < -10){
-            h.y = H+10;
+        if (s.y < -10) {
+            s.y = cao + 10;
         }
 
-        const alpha =
+        const doMo =
             .25 +
             Math.abs(
-                Math.sin(
-                    now*.001+h.phase
-                )
-            )*.65;
+                Math.sin(hienTai * .001 + s.pha)
+            ) * .65;
 
         ctx.beginPath();
 
         ctx.arc(
-            h.x,
-            h.y,
-            h.r,
+            s.x,
+            s.y,
+            s.r,
             0,
-            Math.PI*2
+            Math.PI * 2
         );
 
         ctx.fillStyle =
-            `rgba(255,220,240,${alpha})`;
+            `rgba(255,220,240,${doMo})`;
 
         ctx.fill();
     }
 
-
     /* TIM */
 
-    for(let i=timBay.length-1;i>=0;i--){
+    for (let i = timBay.length - 1; i >= 0; i--) {
 
-        const t = timBay[i];
+        const tim = timBay[i];
 
-        t.y -= t.speed;
-        t.x += t.drift;
-        t.alpha -= .008;
-        t.rotation += .025;
+        tim.y -= tim.tocDo;
+        tim.x += tim.lech;
+        tim.mo -= .008;
+        tim.xoay += .025;
 
         ctx.save();
 
-        ctx.translate(
-            t.x,
-            t.y
-        );
+        ctx.translate(tim.x, tim.y);
+        ctx.rotate(tim.xoay);
 
-        ctx.rotate(
-            t.rotation
-        );
+        ctx.globalAlpha = Math.max(0, tim.mo);
 
-        ctx.globalAlpha =
-            Math.max(0,t.alpha);
+        ctx.font = `${tim.kichThuoc}px Arial`;
+        ctx.fillStyle = "#ff4d8d";
 
-        ctx.font =
-            `${t.size}px Arial`;
-
-        ctx.fillStyle =
-            "#ff4d8d";
-
-        ctx.fillText(
-            "❤",
-            0,
-            0
-        );
+        ctx.fillText("❤", 0, 0);
 
         ctx.restore();
 
-        if(
-            t.alpha <= 0 ||
-            t.y < -50
-        ){
-
-            timBay.splice(i,1);
+        if (tim.mo <= 0 || tim.y < -50) {
+            timBay.splice(i, 1);
         }
     }
 
-
     /* PHÁO HOA */
 
-    for(let i=phaoHoa.length-1;i>=0;i--){
+    for (let i = phaoHoa.length - 1; i >= 0; i--) {
 
         const p = phaoHoa[i];
 
@@ -1590,649 +1468,600 @@ function animate(){
 
         p.vy += .055;
         p.vx *= .995;
-        p.alpha -= .012;
+        p.mo -= .012;
 
         ctx.beginPath();
 
         ctx.arc(
             p.x,
             p.y,
-            p.size,
+            p.kichThuoc,
             0,
-            Math.PI*2
+            Math.PI * 2
         );
 
-        ctx.globalAlpha =
-            Math.max(0,p.alpha);
-
-        ctx.fillStyle =
-            p.color;
+        ctx.globalAlpha = Math.max(0, p.mo);
+        ctx.fillStyle = p.mau;
 
         ctx.fill();
 
         ctx.globalAlpha = 1;
 
-        if(p.alpha <= 0){
-
-            phaoHoa.splice(i,1);
+        if (p.mo <= 0) {
+            phaoHoa.splice(i, 1);
         }
     }
 
-    requestAnimationFrame(animate);
+    requestAnimationFrame(chayHieuUng);
 }
 
-animate();
+chayHieuUng();
 
 
-/* =====================================================
-   AUDIO
-===================================================== */
+/* =========================================================
+   ÂM THANH
+========================================================= */
 
 let audioContext = null;
-
-let effectGain = null;
-let musicGain = null;
-let masterGain = null;
-
 let amThanhBat = false;
+
+let gainHieuUng = null;
+let gainNhac = null;
+let gainTong = null;
 
 let amLuongHieuUng = .45;
 let amLuongNhac = .12;
 
-function khoiTaoAudio(){
+function taoAudio() {
 
-    if(audioContext)
+    if (audioContext) {
         return;
+    }
 
-    const AudioCtx =
+    const Audio =
         window.AudioContext ||
         window.webkitAudioContext;
 
-    if(!AudioCtx)
+    if (!Audio) {
         return;
+    }
 
-    audioContext = new AudioCtx();
+    audioContext = new Audio();
 
-    masterGain =
-        audioContext.createGain();
+    gainTong = audioContext.createGain();
+    gainHieuUng = audioContext.createGain();
+    gainNhac = audioContext.createGain();
 
-    effectGain =
-        audioContext.createGain();
+    gainHieuUng.gain.value = amLuongHieuUng;
+    gainNhac.gain.value = amLuongNhac;
 
-    musicGain =
-        audioContext.createGain();
+    gainHieuUng.connect(gainTong);
+    gainNhac.connect(gainTong);
 
-    effectGain.gain.value =
-        amLuongHieuUng;
-
-    musicGain.gain.value =
-        amLuongNhac;
-
-    masterGain.gain.value = 1;
-
-    effectGain.connect(
-        masterGain
-    );
-
-    musicGain.connect(
-        masterGain
-    );
-
-    masterGain.connect(
-        audioContext.destination
-    );
+    gainTong.connect(audioContext.destination);
 }
 
-async function batAudio(){
+function batAmThanh() {
 
-    khoiTaoAudio();
+    taoAudio();
 
-    if(!audioContext)
+    if (!audioContext) {
         return;
+    }
 
-    if(
-        audioContext.state === "suspended"
-    ){
-
-        await audioContext.resume();
+    if (audioContext.state === "suspended") {
+        audioContext.resume();
     }
 
     amThanhBat = true;
 
-    capNhatNutAmThanh();
+    document.getElementById("nutAmThanh").textContent = "🔊";
 }
 
-function tatAudio(){
+function tatAmThanh() {
 
     amThanhBat = false;
 
-    capNhatNutAmThanh();
+    document.getElementById("nutAmThanh").textContent = "🔇";
 }
 
-function capNhatNutAmThanh(){
+function amThanhNut() {
 
-    $("nutAmThanh").textContent =
-        amThanhBat ? "🔊" : "🔇";
+    if (!amThanhBat) {
+        return;
+    }
+
+    taoTieng(520, .07, "sine", .05);
+    taoTieng(760, .10, "sine", .025, .04);
 }
 
-
-/* =====================================================
-   OSCILLATOR
-===================================================== */
-
-function taoOsc(
+function taoTieng(
     tanSo,
     thoiGian,
-    loai="sine",
-    volume=.08,
-    delay=0,
-    output=null
-){
+    loai = "sine",
+    amLuong = .06,
+    tre = 0,
+    dauRa = null
+) {
 
-    if(!amThanhBat)
+    if (!amThanhBat) {
         return;
+    }
 
-    khoiTaoAudio();
+    taoAudio();
 
-    if(!audioContext)
+    if (!audioContext) {
         return;
+    }
 
-    const osc =
+    const oscillator =
         audioContext.createOscillator();
 
     const gain =
         audioContext.createGain();
 
-    const start =
-        audioContext.currentTime + delay;
+    const batDau =
+        audioContext.currentTime + tre;
 
-    osc.type = loai;
+    oscillator.type = loai;
 
-    osc.frequency.setValueAtTime(
+    oscillator.frequency.setValueAtTime(
         tanSo,
-        start
+        batDau
     );
 
     gain.gain.setValueAtTime(
         .0001,
-        start
+        batDau
     );
 
     gain.gain.exponentialRampToValueAtTime(
-        Math.max(volume,.0002),
-        start+.015
+        amLuong,
+        batDau + .02
     );
 
     gain.gain.exponentialRampToValueAtTime(
         .0001,
-        start+thoiGian
+        batDau + thoiGian
     );
 
-    osc.connect(gain);
+    oscillator.connect(gain);
 
-    gain.connect(
-        output || effectGain
-    );
+    gain.connect(dauRa || gainHieuUng);
 
-    osc.start(start);
+    oscillator.start(batDau);
 
-    osc.stop(
-        start+thoiGian+.05
+    oscillator.stop(
+        batDau + thoiGian + .03
     );
 }
 
+function amThanhTim() {
 
-/* =====================================================
-   ÂM THANH NÚT
-===================================================== */
-
-function amNut(){
-
-    taoOsc(
-        520,
-        .07,
-        "sine",
-        .045
-    );
-
-    taoOsc(
-        760,
-        .1,
-        "sine",
-        .025,
-        .035
-    );
+    taoTieng(120, .12, "sine", .08);
+    taoTieng(150, .12, "sine", .06, .16);
 }
 
+function amThanhLapLanh() {
 
-/* =====================================================
-   ÂM THANH TIM
-===================================================== */
+    const not = [880, 1174, 1568, 1760];
 
-function amTim(){
+    not.forEach((tanSo, i) => {
 
-    taoOsc(
-        120,
-        .12,
-        "sine",
-        .08
-    );
-
-    taoOsc(
-        150,
-        .12,
-        "sine",
-        .065,
-        .16
-    );
-}
-
-
-/* =====================================================
-   LẤP LÁNH
-===================================================== */
-
-function amLapLanh(){
-
-    [
-        880,
-        1174,
-        1568,
-        1760
-    ].forEach((n,i)=>{
-
-        taoOsc(
-            n,
+        taoTieng(
+            tanSo,
             .18,
             "sine",
             .045,
-            i*.06
+            i * .06
         );
     });
 }
 
+function amThanhMoQua() {
 
-/* =====================================================
-   MỞ QUÀ
-===================================================== */
-
-function amMoQua(){
-
-    [
+    const not = [
         261.63,
         329.63,
         392,
         523.25,
         659.25,
         783.99
-    ].forEach((n,i)=>{
+    ];
 
-        taoOsc(
-            n,
+    not.forEach((tanSo, i) => {
+
+        taoTieng(
+            tanSo,
             .25,
             "sine",
             .07,
-            i*.08
+            i * .08
         );
     });
 
-    setTimeout(
-        amLapLanh,
-        550
-    );
+    setTimeout(amThanhLapLanh, 550);
 }
 
+function amThanhFanfare() {
 
-/* =====================================================
-   PHÁO HOA
-===================================================== */
-
-function amPhaoHoa(){
-
-    if(!amThanhBat)
-        return;
-
-    taoOsc(
-        150,
-        .3,
-        "sawtooth",
-        .05
-    );
-
-    taoOsc(
-        700,
-        .18,
-        "triangle",
-        .08,
-        .22
-    );
-
-    taoOsc(
-        1000,
-        .12,
-        "sine",
-        .04,
-        .28
-    );
-}
-
-
-/* =====================================================
-   FANFARE
-===================================================== */
-
-function amFanfare(){
-
-    [
+    const not = [
         523.25,
         659.25,
         783.99,
         1046.5,
         1318.5
-    ].forEach((n,i)=>{
-
-        taoOsc(
-            n,
-            .35,
-            "triangle",
-            .085,
-            i*.1
-        );
-    });
-}
-
-
-/* =====================================================
-   HAPPY BIRTHDAY
-===================================================== */
-
-function amSinhNhat(){
-
-    const melody = [
-
-        [392,.18],
-        [392,.18],
-        [440,.32],
-        [392,.32],
-        [523,.32],
-        [494,.5],
-
-        [392,.18],
-        [392,.18],
-        [440,.32],
-        [392,.32],
-        [587,.32],
-        [523,.5]
-
     ];
 
-    let delay = 0;
+    not.forEach((tanSo, i) => {
 
-    melody.forEach(([n,t])=>{
-
-        taoOsc(
-            n,
-            t,
-            "triangle",
-            .075,
-            delay
-        );
-
-        delay += t+.035;
-    });
-}
-
-
-/* =====================================================
-   TẮT NẾN
-===================================================== */
-
-function amTatNen(){
-
-    if(!amThanhBat)
-        return;
-
-    taoOsc(
-        200,
-        .3,
-        "sawtooth",
-        .04
-    );
-}
-
-
-/* =====================================================
-   ĐIỀU ƯỚC
-===================================================== */
-
-function amDieuUoc(){
-
-    [
-        523.25,
-        659.25,
-        783.99,
-        1046.5
-    ].forEach((n,i)=>{
-
-        taoOsc(
-            n,
+        taoTieng(
+            tanSo,
             .35,
-            "sine",
-            .06,
-            i*.13
+            "triangle",
+            .08,
+            i * .1
         );
     });
 }
 
+function amThanhSinhNhat() {
 
-/* =====================================================
-   MỞ THƯ
-===================================================== */
+    const giaiDieu = [
+        [392, .18],
+        [392, .18],
+        [440, .32],
+        [392, .32],
+        [523, .32],
+        [494, .5],
+        [392, .18],
+        [392, .18],
+        [440, .32],
+        [392, .32],
+        [587, .32],
+        [523, .5]
+    ];
 
-function amMoThu(){
+    let tre = 0;
 
-    taoOsc(
-        392,
-        .12,
-        "sine",
-        .05
+    giaiDieu.forEach(([tanSo, dai]) => {
+
+        taoTieng(
+            tanSo,
+            dai,
+            "triangle",
+            .07,
+            tre
+        );
+
+        tre += dai + .035;
+    });
+}
+
+function amThanhPhaoHoa() {
+
+    if (!amThanhBat) {
+        return;
+    }
+
+    taoAudio();
+
+    if (!audioContext) {
+        return;
+    }
+
+    const oscillator =
+        audioContext.createOscillator();
+
+    const gain =
+        audioContext.createGain();
+
+    const batDau =
+        audioContext.currentTime;
+
+    oscillator.type = "sawtooth";
+
+    oscillator.frequency.setValueAtTime(
+        150,
+        batDau
     );
 
-    taoOsc(
-        523,
-        .18,
-        "sine",
+    oscillator.frequency.exponentialRampToValueAtTime(
+        900,
+        batDau + .28
+    );
+
+    gain.gain.setValueAtTime(
+        .0001,
+        batDau
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
         .06,
-        .1
+        batDau + .03
     );
 
-    taoOsc(
-        659,
-        .25,
-        "sine",
-        .06,
-        .22
+    gain.gain.exponentialRampToValueAtTime(
+        .0001,
+        batDau + .3
     );
 
-    setTimeout(
-        amLapLanh,
-        350
-    );
+    oscillator.connect(gain);
+    gain.connect(gainHieuUng);
+
+    oscillator.start(batDau);
+    oscillator.stop(batDau + .32);
 }
 
 
-/* =====================================================
-   MỞ TRANG CHÍNH
-   QUAN TRỌNG: HÀM NÀY LUÔN ĐƯỢC ĐĂNG KÝ
-===================================================== */
+/* =========================================================
+   MỞ QUÀ
+   Đây là phần đã sửa lỗi nút trái tim
+========================================================= */
 
 let daMo = false;
 
-async function moTrangChinh(){
+function moQua() {
 
-    if(daMo)
+    if (daMo) {
         return;
+    }
 
     daMo = true;
 
-    /* Bắt audio nhưng không để audio lỗi làm hỏng nút */
+    /*
+       Audio chỉ được khởi động sau thao tác
+       của người dùng nên trình duyệt sẽ cho phép.
+    */
 
-    try{
+    batAmThanh();
 
-        await batAudio();
+    amThanhMoQua();
 
-        amMoQua();
+    setTimeout(amThanhFanfare, 700);
+    setTimeout(amThanhSinhNhat, 1500);
 
-        setTimeout(
-            amFanfare,
-            700
-        );
+    /* Tim */
 
-        setTimeout(
-            amSinhNhat,
-            1500
-        );
+    for (let i = 0; i < 45; i++) {
 
-    }catch(error){
-
-        console.log(
-            "Âm thanh không khả dụng:",
-            error
-        );
+        setTimeout(() => {
+            taoTim(
+                Math.random() * rong,
+                cao + 20
+            );
+        }, i * 22);
     }
-
-
-    /* Hiệu ứng tim */
-
-    for(let i=0;i<45;i++){
-
-        setTimeout(
-            ()=>{
-                taoTim(
-                    Math.random()*W,
-                    H+20
-                );
-            },
-            i*22
-        );
-    }
-
 
     /* Pháo hoa */
 
-    for(let i=0;i<5;i++){
+    for (let i = 0; i < 5; i++) {
 
-        setTimeout(
-            ()=>{
-                taoPhaoHoa();
-                amPhaoHoa();
-            },
-            i*280
-        );
+        setTimeout(() => {
+
+            taoPhaoHoa();
+            amThanhPhaoHoa();
+
+        }, i * 300);
     }
 
-
-    /* Ẩn màn hình mở */
+    /*
+       Ẩn màn hình đầu
+    */
 
     manHinhMo.classList.add("an");
 
+    /*
+       Hiện ứng dụng
+    */
 
-    /* Hiện ứng dụng */
-
-    setTimeout(
-        ()=>{
-            ungDung.classList.add("hien");
-        },
-        300
-    );
+    setTimeout(() => {
+        ungDung.classList.add("hien");
+    }, 350);
 }
 
 
-/* =====================================================
-   GÁN SỰ KIỆN TRÁI TIM
-===================================================== */
+/*
+   Dùng cả click và pointerup.
+   Nếu trình duyệt chặn một kiểu sự kiện,
+   kiểu còn lại vẫn có thể hoạt động.
+*/
 
-nutMo.addEventListener(
-    "click",
-    moTrangChinh
-);
+nutMo.addEventListener("click", moQua);
 
-nutMo.addEventListener(
-    "touchend",
-    function(e){
+nutMo.addEventListener("pointerup", function(e) {
 
-        e.preventDefault();
-
-        moTrangChinh();
-    },
-    {passive:false}
-);
+    if (e.pointerType === "touch") {
+        moQua();
+    }
+});
 
 
-/* =====================================================
-   ÂM THANH
-===================================================== */
+/* =========================================================
+   HIỆU ỨNG PHÁO HOA
+========================================================= */
 
-$("nutAmThanh").addEventListener(
-    "click",
-    async()=>{
+function banPhaoHoa(soLuong = 6) {
 
-        if(amThanhBat){
+    for (let i = 0; i < soLuong; i++) {
 
-            tatAudio();
+        setTimeout(() => {
 
-        }else{
+            taoPhaoHoa();
+            amThanhPhaoHoa();
 
-            await batAudio();
+        }, i * 280);
+    }
+}
 
-            amLapLanh();
+
+/* =========================================================
+   NÚT ÂM THANH
+========================================================= */
+
+document
+    .getElementById("nutAmThanh")
+    .addEventListener("click", function() {
+
+        if (amThanhBat) {
+            tatAmThanh();
+        } else {
+            batAmThanh();
+            amThanhLapLanh();
         }
-    }
-);
+    });
 
 
-/* =====================================================
-   PHÁO HOA
-===================================================== */
+/* =========================================================
+   NÚT PHÁO HOA
+========================================================= */
 
-function banPhaoHoa(
-    soLuong=6
-){
+document
+    .getElementById("nutPhaoHoa")
+    .addEventListener("click", function() {
 
-    for(let i=0;i<soLuong;i++){
+        amThanhNut();
+        banPhaoHoa(6);
+    });
 
-        setTimeout(
-            ()=>{
+document
+    .getElementById("nutPhaoHoa2")
+    .addEventListener("click", function() {
 
-                taoPhaoHoa();
-                amPhaoHoa();
+        amThanhNut();
+        banPhaoHoa(8);
+    });
 
-            },
-            i*300
-        );
-    }
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function moModal(tieuDe, noiDung) {
+
+    document.getElementById("modalTieuDe").textContent =
+        tieuDe;
+
+    document.getElementById("modalNoiDung").textContent =
+        noiDung;
+
+    modal.classList.add("mo");
 }
 
-$("nutPhaoHoa").addEventListener(
-    "click",
-    ()=>{
-        amNut();
-        banPhaoHoa(6);
+function dongModal() {
+    modal.classList.remove("mo");
+}
+
+document
+    .getElementById("nutDongModal")
+    .addEventListener("click", dongModal);
+
+modal.addEventListener("click", function(e) {
+
+    if (e.target === modal) {
+        dongModal();
     }
-);
-
-$("nutPhaoHoa2").addEventListener(
-    "click",
-    ()=>{
-        amNut();
-        banPhaoHoa(9);
-    }
-);
+});
 
 
-/* =====================================================
+/* =========================================================
+   LỜI CHÚC
+========================================================= */
+
+const loiChuc = [
+
+    "Chúc bạn tuổi mới thật nhiều niềm vui, sức khỏe, may mắn và những khoảnh khắc đáng nhớ. 💖",
+
+    "Chúc cho mọi điều bạn đang cố gắng sẽ sớm có một kết quả thật xứng đáng. 🌟",
+
+    "Tuổi mới, hành trình mới, thật nhiều điều tuyệt vời đang chờ phía trước. 🎂",
+
+    "Mong bạn luôn giữ được nụ cười và niềm tin vào những điều tốt đẹp. 🌷",
+
+    "Chúc bạn có một năm thật rực rỡ và đáng nhớ. ✨"
+];
+
+document
+    .getElementById("nutLoiChuc")
+    .addEventListener("click", function() {
+
+        const loi =
+            loiChuc[
+                Math.floor(
+                    Math.random() * loiChuc.length
+                )
+            ];
+
+        moModal(
+            "💌 Một lời chúc dành cho bạn",
+            loi
+        );
+
+        amThanhLapLanh();
+    });
+
+
+/* =========================================================
+   ĐỔI TÊN
+========================================================= */
+
+document
+    .getElementById("nutTen")
+    .addEventListener("click", function() {
+
+        modalTen.classList.add("mo");
+
+        setTimeout(() => {
+
+            document
+                .getElementById("oTen")
+                .focus();
+
+        }, 100);
+    });
+
+document
+    .getElementById("nutLuuTen")
+    .addEventListener("click", function() {
+
+        const input =
+            document.getElementById("oTen");
+
+        const ten = input.value.trim();
+
+        if (!ten) {
+            alert("Bạn chưa nhập tên nhé! 💗");
+            return;
+        }
+
+        tenHienThi.textContent =
+            "🎉 " + ten + " 🎉";
+
+        localStorage.setItem(
+            "tenSinhNhat",
+            ten
+        );
+
+        modalTen.classList.remove("mo");
+
+        amThanhFanfare();
+        banPhaoHoa(3);
+    });
+
+
+const tenCu =
+    localStorage.getItem("tenSinhNhat");
+
+if (tenCu) {
+
+    tenHienThi.textContent =
+        "🎉 " + tenCu + " 🎉";
+}
+
+
+/* =========================================================
    ĐIỀU ƯỚC
-===================================================== */
+========================================================= */
 
 const danhSachUoc = [
 
@@ -2246,420 +2075,142 @@ const danhSachUoc = [
 
     "Mong những điều tốt đẹp nhất sẽ tìm đến bạn. 🌟",
 
-    "Mong bạn luôn đủ mạnh mẽ để theo đuổi điều mình yêu thích. 💫",
-
-    "Mong tuổi mới của bạn sẽ có thật nhiều kỷ niệm đẹp. 🎂",
-
-    "Mong trái tim bạn luôn được bình yên và hạnh phúc. 💕"
-
+    "Mong bạn luôn đủ mạnh mẽ để theo đuổi điều mình yêu thích. 💫"
 ];
 
-function guiDieuUoc(){
+function guiDieuUoc() {
 
     const uoc =
         danhSachUoc[
             Math.floor(
-                Math.random()*
-                danhSachUoc.length
+                Math.random() * danhSachUoc.length
             )
         ];
 
     dieuUoc.textContent = uoc;
 
-    amDieuUoc();
+    amThanhLapLanh();
 
-    for(let i=0;i<30;i++){
+    for (let i = 0; i < 25; i++) {
 
-        setTimeout(
-            ()=>taoTim(
-                Math.random()*W,
-                H+20
-            ),
-            i*25
-        );
+        setTimeout(() => {
+            taoTim(
+                Math.random() * rong,
+                cao + 20
+            );
+        }, i * 25);
     }
 }
 
-$("nutUoc").addEventListener(
-    "click",
-    ()=>{
-        guiDieuUoc();
-    }
-);
+document
+    .getElementById("nutUoc")
+    .addEventListener("click", guiDieuUoc);
 
-$("nutUoc2").addEventListener(
-    "click",
-    ()=>{
-        guiDieuUoc();
-    }
-);
+document
+    .getElementById("nutUoc2")
+    .addEventListener("click", guiDieuUoc);
 
 
-/* =====================================================
-   MODAL
-===================================================== */
+/* =========================================================
+   🎁 BẤT NGỜ
+   ĐÂY LÀ PHẦN BỊ THIẾU Ở CODE CŨ
+========================================================= */
 
-function moModal(
-    tieuDe,
-    noiDung
-){
+document
+    .getElementById("nutBatNgo")
+    .addEventListener("click", function() {
 
-    $("modalTieuDe").textContent =
-        tieuDe;
+        amThanhFanfare();
 
-    $("modalNoiDung").textContent =
-        noiDung;
+        /*
+           Cho tim bay trước
+        */
 
-    modal.classList.add("mo");
-}
+        for (let i = 0; i < 60; i++) {
 
-function dongModal(){
+            setTimeout(() => {
 
-    modal.classList.remove("mo");
-}
+                taoTim(
+                    Math.random() * rong,
+                    cao + 20
+                );
 
-$("nutDongModal").addEventListener(
-    "click",
-    dongModal
-);
-
-modal.addEventListener(
-    "click",
-    e=>{
-
-        if(e.target === modal){
-
-            dongModal();
+            }, i * 18);
         }
-    }
-);
 
+        /*
+           Pháo hoa
+        */
 
-/* =====================================================
-   LỜI CHÚC
-===================================================== */
+        banPhaoHoa(10);
 
-const loiChucList = [
-
-    "Chúc bạn tuổi mới thật nhiều niềm vui, sức khỏe, may mắn và những khoảnh khắc đáng nhớ. 💖",
-
-    "Chúc cho mọi điều bạn đang cố gắng sẽ sớm có một kết quả thật xứng đáng. 🌟",
-
-    "Tuổi mới, hành trình mới, thật nhiều điều tuyệt vời đang chờ phía trước. 🎂",
-
-    "Mong bạn luôn giữ được nụ cười, sự nhiệt huyết và niềm tin vào những điều tốt đẹp. 🌷",
-
-    "Chúc bạn có một năm thật rực rỡ, giống như chính ánh sáng mà bạn mang đến cho những người xung quanh. ✨",
-
-    "Chúc bạn luôn được yêu thương, trân trọng và có thật nhiều ngày đáng nhớ. 💗"
-
-];
-
-$("nutLoiChuc").addEventListener(
-    "click",
-    ()=>{
-
-        const loi =
-            loiChucList[
-                Math.floor(
-                    Math.random()*
-                    loiChucList.length
-                )
-            ];
+        /*
+           Hiện modal
+        */
 
         moModal(
-            "💌 Một lời chúc dành cho bạn",
-            loi
+            "🎁 BẤT NGỜ DÀNH CHO BẠN!",
+            "Nếu hôm nay có một điều mình muốn gửi đến bạn, thì đó là: mong bạn luôn được yêu thương, luôn có lý do để mỉm cười và tuổi mới sẽ thật sự tuyệt vời. 💖🎂✨"
         );
-
-        amMoThu();
-    }
-);
+    });
 
 
-/* =====================================================
-   ĐỔI TÊN
-===================================================== */
-
-$("nutTen").addEventListener(
-    "click",
-    ()=>{
-
-        modalTen.classList.add("mo");
-
-        setTimeout(
-            ()=>{
-                $("oTen").focus();
-            },
-            150
-        );
-    }
-);
-
-$("nutLuuTen").addEventListener(
-    "click",
-    ()=>{
-
-        const ten =
-            $("oTen").value.trim();
-
-        if(!ten){
-
-            alert(
-                "Bạn chưa nhập tên nhé! 💗"
-            );
-
-            return;
-        }
-
-        tenHienThi.textContent =
-            "🎉 " + ten + " 🎉";
-
-        try{
-
-            localStorage.setItem(
-                "tenSinhNhat",
-                ten
-            );
-
-        }catch(e){
-
-            console.log(
-                "Không thể lưu tên"
-            );
-        }
-
-        modalTen.classList.remove("mo");
-
-        amFanfare();
-
-        banPhaoHoa(3);
-    }
-);
-
-
-/* Lấy tên cũ */
-
-try{
-
-    const tenCu =
-        localStorage.getItem(
-            "tenSinhNhat"
-        );
-
-    if(tenCu){
-
-        tenHienThi.textContent =
-            "🎉 " + tenCu + " 🎉";
-    }
-
-}catch(e){
-
-    console.log(
-        "Không thể đọc tên"
-    );
-}
-
-
-/* =====================================================
-   ENTER KHI NHẬP TÊN
-===================================================== */
-
-$("oTen").addEventListener(
-    "keydown",
-    e=>{
-
-        if(e.key === "Enter"){
-
-            e.preventDefault();
-
-            $("nutLuuTen").click();
-        }
-    }
-);
-
-
-/* =====================================================
-   🎂 BÁNH
-===================================================== */
+/* =========================================================
+   BÁNH SINH NHẬT
+========================================================= */
 
 document
     .querySelector(".banh")
-    .addEventListener(
-        "click",
-        ()=>{
+    .addEventListener("click", function() {
 
-            amTatNen();
-
-            setTimeout(
-                amFanfare,
-                400
-            );
-
-            setTimeout(
-                amSinhNhat,
-                900
-            );
-
-            setTimeout(
-                ()=>{
-                    banPhaoHoa(6);
-                },
-                500
-            );
-
-            for(let i=0;i<25;i++){
-
-                setTimeout(
-                    ()=>taoTim(
-                        Math.random()*W,
-                        H+20
-                    ),
-                    i*30
-                );
-            }
-
-            moModal(
-                "🎂 Hãy ước một điều!",
-                "Nhắm mắt lại, nghĩ về điều bạn mong muốn nhất và giữ điều ước ấy trong tim nhé. ✨"
-            );
-        }
-    );
-
-
-/* =====================================================
-   🎁 BẤT NGỜ
-   ĐÂY LÀ PHẦN BỊ THIẾU Ở CODE CŨ
-===================================================== */
-
-const batNgoList = [
-
-    {
-        icon:"🎁",
-        title:"BẤT NGỜ CHƯA? 💖",
-        text:"Nếu bạn đang đọc đến đây thì hãy nhớ rằng: bạn xứng đáng với tất cả những điều tốt đẹp nhất trong tuổi mới. Chúc bạn luôn hạnh phúc! ✨"
-    },
-
-    {
-        icon:"💗",
-        title:"MỘT ĐIỀU NHỎ DÀNH CHO BẠN",
-        text:"Có thể hôm nay chỉ là một ngày bình thường với thế giới, nhưng với bạn, đây là ngày đánh dấu một hành trình mới. Hãy tận hưởng nó thật trọn vẹn nhé! 🌷"
-    },
-
-    {
-        icon:"🌟",
-        title:"BÍ MẬT ĐƯỢC MỞ KHÓA!",
-        text:"Tuổi mới = thêm một chương mới. Mong chương mới này có thật nhiều tiếng cười, những chuyến đi đáng nhớ và những người luôn ở bên bạn. 💫"
-    },
-
-    {
-        icon:"🎂",
-        title:"CHÚC MỪNG SINH NHẬT!",
-        text:"Điều bất ngờ thật sự là: từ hôm nay, hãy cho phép bản thân vui hơn, yêu bản thân hơn và theo đuổi những điều mình thích nhiều hơn nhé. ❤️"
-    },
-
-    {
-        icon:"✨",
-        title:"ĐIỀU ƯỚC BÍ MẬT",
-        text:"Mong rằng một điều bạn chưa từng nói với ai sẽ có ngày trở thành hiện thực. Đừng bỏ cuộc nhé. ✨"
-    }
-
-];
-
-function moBatNgo(){
-
-    const item =
-        batNgoList[
-            Math.floor(
-                Math.random()*
-                batNgoList.length
-            )
-        ];
-
-    $("modalTieuDe").innerHTML =
-        `<div class="bat-ngo">
-            <div class="bat-ngo-icon">
-                ${item.icon}
-            </div>
-            <div class="bat-ngo-tieu-de">
-                ${item.title}
-            </div>
-        </div>`;
-
-    $("modalNoiDung").textContent =
-        item.text;
-
-    modal.classList.add("mo");
-
-    /* hiệu ứng */
-
-    amFanfare();
-
-    setTimeout(
-        ()=>{
-            banPhaoHoa(7);
-        },
-        150
-    );
-
-    for(let i=0;i<50;i++){
+        amThanhFanfare();
 
         setTimeout(
-            ()=>{
-                taoTim(
-                    Math.random()*W,
-                    H+20
-                );
-            },
-            i*20
+            amThanhSinhNhat,
+            500
         );
-    }
-}
 
-$("nutBatNgo").addEventListener(
-    "click",
-    moBatNgo
-);
+        setTimeout(
+            () => banPhaoHoa(6),
+            400
+        );
+
+        moModal(
+            "🎂 Hãy ước một điều!",
+            "Nhắm mắt lại, nghĩ về điều bạn mong muốn nhất và giữ điều ước ấy trong tim nhé. Sau đó hãy thổi nến thật mạnh! ✨"
+        );
+    });
 
 
-/* =====================================================
-   🎨 CHỦ ĐỀ
-===================================================== */
+/* =========================================================
+   ĐỔI CHỦ ĐỀ
+========================================================= */
 
 let chuDe = 0;
 
-const chuDes = [
+const danhSachChuDe = [
 
-    ["#08030d","#ff4d8d"],
-
-    ["#06191b","#00c9a7"],
-
-    ["#120622","#9b5de5"],
-
-    ["#1d1106","#ff9f1c"],
-
-    ["#041522","#00b4d8"],
-
-    ["#17030b","#ff006e"]
-
+    ["#08030d", "#ff4d8d"],
+    ["#06191b", "#00c9a7"],
+    ["#120622", "#9b5de5"],
+    ["#1d1106", "#ff9f1c"],
+    ["#041522", "#00b4d8"]
 ];
 
-$("nutChuDe").addEventListener(
-    "click",
-    ()=>{
+document
+    .getElementById("nutChuDe")
+    .addEventListener("click", function() {
 
         chuDe++;
 
-        if(chuDe >= chuDes.length){
-
+        if (chuDe >= danhSachChuDe.length) {
             chuDe = 0;
         }
 
         const mau =
-            chuDes[chuDe];
+            danhSachChuDe[chuDe];
 
-        document.body.style.background =
-            `
+        document.body.style.background = `
             radial-gradient(
                 circle at 15% 15%,
                 ${mau[1]}55,
@@ -2675,349 +2226,306 @@ $("nutChuDe").addEventListener(
                 ${mau[0]},
                 #08030d
             )
-            `;
+        `;
 
-        amNut();
-
-        banPhaoHoa(3);
-    }
-);
+        amThanhNut();
+        banPhaoHoa(2);
+    });
 
 
-/* =====================================================
+/* =========================================================
    TOÀN MÀN HÌNH
-===================================================== */
+========================================================= */
 
-$("nutFull").addEventListener(
-    "click",
-    async()=>{
+document
+    .getElementById("nutFull")
+    .addEventListener("click", async function() {
 
-        try{
+        try {
 
-            if(!document.fullscreenElement){
+            if (!document.fullscreenElement) {
 
-                await document
-                    .documentElement
-                    .requestFullscreen();
+                await document.documentElement.requestFullscreen();
 
-            }else{
+            } else {
 
                 await document.exitFullscreen();
             }
 
-        }catch(e){
+        } catch (loi) {
 
-            alert(
-                "Trình duyệt này không cho phép toàn màn hình."
-            );
+            console.log("Không thể bật toàn màn hình", loi);
         }
-    }
-);
+    });
 
 
-/* =====================================================
-   CHƠI LẠI
-===================================================== */
+/* =========================================================
+   CHƠI LẠI HIỆU ỨNG
+========================================================= */
 
-$("nutReplay").addEventListener(
-    "click",
-    ()=>{
+document
+    .getElementById("nutReplay")
+    .addEventListener("click", function() {
 
-        amMoQua();
+        amThanhMoQua();
 
         setTimeout(
-            amFanfare,
+            amThanhFanfare,
             600
         );
 
         setTimeout(
-            ()=>{
-                banPhaoHoa(8);
-            },
+            () => banPhaoHoa(8),
             500
         );
 
-        for(let i=0;i<50;i++){
+        for (let i = 0; i < 50; i++) {
 
-            setTimeout(
-                ()=>taoTim(),
-                i*20
-            );
+            setTimeout(() => {
+                taoTim();
+            }, i * 20);
         }
-    }
-);
+    });
 
 
-/* =====================================================
+/* =========================================================
    CHẠM MÀN HÌNH
-===================================================== */
+========================================================= */
 
-let lanCham = 0;
+let lanChamCuoi = 0;
 
-document.addEventListener(
-    "pointerdown",
-    e=>{
+document.addEventListener("pointerdown", function(e) {
 
-        const now = Date.now();
+    const hienTai = Date.now();
 
-        if(now-lanCham < 80)
-            return;
-
-        lanCham = now;
-
-        if(
-            e.target.closest(
-                "button,input,textarea"
-            )
-        )
-            return;
-
-        if(!daMo)
-            return;
-
-        for(let i=0;i<4;i++){
-
-            taoTim(
-                e.clientX+
-                (Math.random()-.5)*30,
-
-                e.clientY
-            );
-        }
-
-        amTim();
+    if (hienTai - lanChamCuoi < 80) {
+        return;
     }
-);
+
+    lanChamCuoi = hienTai;
+
+    if (
+        e.target.closest(
+            "button,input,textarea"
+        )
+    ) {
+        return;
+    }
+
+    if (!daMo) {
+        return;
+    }
+
+    for (let i = 0; i < 3; i++) {
+
+        taoTim(
+            e.clientX + (Math.random() - .5) * 30,
+            e.clientY
+        );
+    }
+
+    amThanhTim();
+});
 
 
-/* =====================================================
+/* =========================================================
    TIM TỰ BAY
-===================================================== */
+========================================================= */
 
-setInterval(
-    ()=>{
+setInterval(function() {
 
-        if(daMo){
+    if (daMo) {
 
-            taoTim(
-                Math.random()*W,
-                H+20
-            );
-        }
+        taoTim(
+            Math.random() * rong,
+            cao + 20
+        );
+    }
 
-    },
-    1200
-);
+}, 1000);
 
 
-/* =====================================================
-   🎂 ĐẾM NGƯỢC SINH NHẬT
-   NGÀY SINH NHẬT: 24/08
-===================================================== */
+/* =========================================================
+   ĐỒNG HỒ SINH NHẬT
+   🎂 24 THÁNG 8
+========================================================= */
 
-const THANG_SINH_NHAT = 8;
 const NGAY_SINH_NHAT = 24;
+const THANG_SINH_NHAT = 8;
 
-function sinhNhatTiepTheo(){
+function laySinhNhatTiepTheo() {
 
-    const now = new Date();
+    const homNay = new Date();
 
     let nam =
-        now.getFullYear();
+        homNay.getFullYear();
 
-    let target =
+    let sinhNhat =
         new Date(
             nam,
-            THANG_SINH_NHAT-1,
+            THANG_SINH_NHAT - 1,
             NGAY_SINH_NHAT,
-            0,
             0,
             0,
             0
         );
 
-    if(target <= now){
+    if (sinhNhat <= homNay) {
 
-        target =
+        sinhNhat =
             new Date(
-                nam+1,
-                THANG_SINH_NHAT-1,
+                nam + 1,
+                THANG_SINH_NHAT - 1,
                 NGAY_SINH_NHAT,
-                0,
                 0,
                 0,
                 0
             );
     }
 
-    return target;
+    return sinhNhat;
 }
 
+function capNhatDemNguoc() {
 
-function capNhatDem(){
+    const hienTai = new Date();
+    const sinhNhat = laySinhNhatTiepTheo();
 
-    const now =
-        new Date();
+    let thoiGian =
+        sinhNhat.getTime() -
+        hienTai.getTime();
 
-    const target =
-        sinhNhatTiepTheo();
-
-    let ms =
-        target-now;
-
-    if(ms < 0)
-        ms = 0;
-
+    if (thoiGian < 0) {
+        thoiGian = 0;
+    }
 
     const ngay =
         Math.floor(
-            ms/86400000
+            thoiGian / 86400000
         );
 
-    ms %= 86400000;
-
+    thoiGian %= 86400000;
 
     const gio =
         Math.floor(
-            ms/3600000
+            thoiGian / 3600000
         );
 
-    ms %= 3600000;
-
+    thoiGian %= 3600000;
 
     const phut =
         Math.floor(
-            ms/60000
+            thoiGian / 60000
         );
 
-    ms %= 60000;
-
+    thoiGian %= 60000;
 
     const giay =
         Math.floor(
-            ms/1000
+            thoiGian / 1000
         );
 
+    document.getElementById("ngay").textContent =
+        String(ngay).padStart(2, "0");
 
-    $("ngay").textContent =
-        String(ngay).padStart(2,"0");
+    document.getElementById("gio").textContent =
+        String(gio).padStart(2, "0");
 
-    $("gio").textContent =
-        String(gio).padStart(2,"0");
+    document.getElementById("phut").textContent =
+        String(phut).padStart(2, "0");
 
-    $("phut").textContent =
-        String(phut).padStart(2,"0");
-
-    $("giay").textContent =
-        String(giay).padStart(2,"0");
+    document.getElementById("giay").textContent =
+        String(giay).padStart(2, "0");
 }
 
-capNhatDem();
+capNhatDemNguoc();
 
 setInterval(
-    capNhatDem,
+    capNhatDemNguoc,
     1000
 );
 
 
-/* =====================================================
-   ÂM LƯỢNG
-===================================================== */
+/* =========================================================
+   THANH ÂM LƯỢNG
+========================================================= */
 
-$("amLuongHieuUng").addEventListener(
-    "input",
-    e=>{
+document
+    .getElementById("amLuongHieuUng")
+    .addEventListener("input", function(e) {
 
         amLuongHieuUng =
             Number(e.target.value);
 
-        if(effectGain){
-
-            effectGain.gain.value =
+        if (gainHieuUng) {
+            gainHieuUng.gain.value =
                 amLuongHieuUng;
         }
-    }
-);
+    });
 
-
-$("amLuongNhac").addEventListener(
-    "input",
-    e=>{
+document
+    .getElementById("amLuongNhac")
+    .addEventListener("input", function(e) {
 
         amLuongNhac =
             Number(e.target.value);
 
-        if(musicGain){
-
-            musicGain.gain.value =
+        if (gainNhac) {
+            gainNhac.gain.value =
                 amLuongNhac;
         }
+    });
+
+
+/* =========================================================
+   PHÍM SPACE = PHÁO HOA
+========================================================= */
+
+document.addEventListener("keydown", function(e) {
+
+    if (e.code !== "Space") {
+        return;
     }
-);
 
-
-/* =====================================================
-   SPACE = PHÁO HOA
-===================================================== */
-
-document.addEventListener(
-    "keydown",
-    e=>{
-
-        if(e.code !== "Space")
-            return;
-
-        if(
-            e.target.tagName === "INPUT" ||
-            e.target.tagName === "TEXTAREA"
-        )
-            return;
-
-        e.preventDefault();
-
-        if(daMo){
-
-            banPhaoHoa(5);
-        }
+    if (
+        e.target.tagName === "INPUT" ||
+        e.target.tagName === "TEXTAREA"
+    ) {
+        return;
     }
-);
 
+    e.preventDefault();
 
-/* =====================================================
-   ESC = ĐÓNG MODAL
-===================================================== */
-
-document.addEventListener(
-    "keydown",
-    e=>{
-
-        if(e.key === "Escape"){
-
-            modal.classList.remove("mo");
-            modalTen.classList.remove("mo");
-        }
+    if (daMo) {
+        banPhaoHoa(5);
     }
-);
+});
 
 
-/* =====================================================
+/* =========================================================
+   PHÍM ESC = ĐÓNG MODAL
+========================================================= */
+
+document.addEventListener("keydown", function(e) {
+
+    if (e.key === "Escape") {
+
+        modal.classList.remove("mo");
+        modalTen.classList.remove("mo");
+    }
+});
+
+
+/* =========================================================
    KHỞI TẠO
-===================================================== */
+========================================================= */
 
-window.addEventListener(
-    "load",
-    ()=>{
+window.addEventListener("load", function() {
 
-        resizeCanvas();
-        taoHat();
-        capNhatDem();
+    resizeCanvas();
+    taoSao();
 
-        console.log(
-            "🎂 Trang sinh nhật đã khởi động thành công!"
-        );
-    }
-);
-
+});
 </script>
 
 </body>
