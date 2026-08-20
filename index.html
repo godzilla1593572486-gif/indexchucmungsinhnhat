@@ -13,13 +13,13 @@
     padding:0;
 }
 
-html,body{
+html,
+body{
     width:100%;
-    height:100%;
+    min-height:100%;
 }
 
 body{
-    overflow:hidden;
     font-family:
         Arial,
         "Segoe UI",
@@ -27,64 +27,165 @@ body{
 
     background:
         radial-gradient(
-            circle at center,
-            #581c87 0%,
-            #312e81 35%,
-            #111827 70%,
-            #020617 100%
+            circle at 50% 40%,
+            #ffe5ec 0%,
+            #ffc2d1 35%,
+            #bde0fe 100%
         );
 
-    color:white;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    transition:
+        background 1s ease;
 }
 
-/* =========================
+/* =====================================================
    NỀN
-========================= */
+===================================================== */
 
-#background{
+#bgParticles{
     position:fixed;
     inset:0;
     overflow:hidden;
     pointer-events:none;
+    z-index:0;
 }
 
-.star{
+.bg-star{
     position:absolute;
-    width:3px;
-    height:3px;
+
+    width:4px;
+    height:4px;
 
     border-radius:50%;
 
-    background:white;
+    background:#fff;
 
-    opacity:.5;
+    box-shadow:
+        0 0 8px #fff,
+        0 0 15px #ffb3c1;
 
     animation:
-        twinkle
+        starTwinkle
         2s
-        infinite
-        ease-in-out;
+        ease-in-out
+        infinite;
 }
 
-@keyframes twinkle{
+@keyframes starTwinkle{
 
     0%,100%{
         opacity:.15;
-        transform:scale(.7);
+        transform:scale(.5);
     }
 
     50%{
         opacity:1;
-        transform:scale(1.5);
+        transform:scale(1.4);
     }
 }
 
-/* =========================
+/* =====================================================
+   CARD
+===================================================== */
+
+.card-container{
+    position:relative;
+
+    width:92vw;
+    max-width:700px;
+
+    min-height:620px;
+
+    padding:25px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    border-radius:30px;
+
+    background:
+        rgba(255,255,255,.72);
+
+    border:
+        1px solid
+        rgba(255,255,255,.8);
+
+    box-shadow:
+        0 30px 80px
+        rgba(201,24,74,.18),
+
+        0 10px 30px
+        rgba(0,0,0,.08);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    z-index:10;
+}
+
+/* ánh sáng */
+
+.card-container::before{
+    content:"";
+
+    position:absolute;
+
+    width:250px;
+    height:250px;
+
+    top:-130px;
+    right:-100px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.55);
+
+    filter:blur(30px);
+
+    pointer-events:none;
+}
+
+.card-container::after{
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    bottom:-130px;
+    left:-100px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,117,143,.25);
+
+    filter:blur(35px);
+
+    pointer-events:none;
+}
+
+/* =====================================================
    CANVAS
-========================= */
+===================================================== */
 
 #canvas{
-    position:fixed;
+    position:absolute;
+
     inset:0;
 
     width:100%;
@@ -95,354 +196,195 @@ body{
     z-index:2;
 }
 
-/* =========================
-   THANH CÔNG CỤ
-========================= */
+/* =====================================================
+   MÀN HÌNH TRÁI TIM
+===================================================== */
 
-#toolbar{
-    position:fixed;
-
-    top:15px;
-    right:15px;
-
-    display:flex;
-    gap:8px;
-
-    z-index:1000;
-}
-
-.tool{
-    width:42px;
-    height:42px;
-
-    border-radius:50%;
-
-    border:
-        1px solid
-        rgba(255,255,255,.2);
-
-    background:
-        rgba(255,255,255,.1);
-
-    color:white;
-
-    cursor:pointer;
-
-    font-size:18px;
-
-    backdrop-filter:blur(10px);
-
-    transition:.25s;
-}
-
-.tool:hover{
-    transform:scale(1.1);
-
-    background:
-        rgba(255,255,255,.2);
-}
-
-/* =========================
-   KHUNG CHÍNH
-========================= */
-
-#app{
-    position:relative;
-
-    width:100%;
-    height:100%;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    padding:20px;
-
-    z-index:10;
-}
-
-.card{
-    position:relative;
-
-    width:min(94vw,700px);
-
-    min-height:570px;
-
-    padding:40px 25px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    overflow:hidden;
-
-    border-radius:35px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.14),
-            rgba(255,255,255,.035)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.2);
-
-    box-shadow:
-        0 40px 100px
-        rgba(0,0,0,.55),
-
-        inset
-        0 1px 1px
-        rgba(255,255,255,.2);
-
-    backdrop-filter:
-        blur(20px);
-}
-
-/* Ánh sáng chạy quanh card */
-
-.card::before{
-    content:"";
-
+#heartWrapper{
     position:absolute;
 
-    width:200%;
-    height:200%;
-
-    top:-50%;
-    left:-50%;
-
-    background:
-        conic-gradient(
-            transparent,
-            rgba(255,255,255,.12),
-            transparent 30%
-        );
-
-    animation:
-        rotateLight
-        8s
-        linear
-        infinite;
-
-    pointer-events:none;
-}
-
-@keyframes rotateLight{
-
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-/* =========================
-   MỞ QUÀ
-========================= */
-
-#opening{
-    position:absolute;
-
-    inset:0;
+    z-index:30;
 
     display:flex;
 
     flex-direction:column;
 
     align-items:center;
+
     justify-content:center;
-
-    z-index:50;
-
-    transition:
-        opacity .7s ease,
-        transform .7s ease;
-}
-
-#gift{
-    position:relative;
-
-    width:140px;
-    height:130px;
 
     cursor:pointer;
 
-    animation:
-        giftFloat
-        2s
-        ease-in-out
-        infinite;
+    user-select:none;
+
+    transition:
+        transform .7s
+        cubic-bezier(.34,1.56,.64,1),
+        opacity .5s ease;
 }
 
-@keyframes giftFloat{
+.heart-btn{
+    position:relative;
 
-    0%,100%{
-        transform:
-            translateY(0)
-            rotate(-2deg);
-    }
+    width:105px;
+    height:105px;
 
-    50%{
-        transform:
-            translateY(-15px)
-            rotate(2deg);
-    }
-}
+    display:flex;
 
-.gift-box{
-    position:absolute;
+    align-items:center;
+    justify-content:center;
 
-    left:15px;
-    bottom:0;
-
-    width:110px;
-    height:75px;
-
-    border-radius:10px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff4d6d,
-            #c9184a
-        );
-
-    box-shadow:
-        0 15px 40px
-        rgba(255,40,100,.45);
-}
-
-.gift-box::after{
-    content:"";
-
-    position:absolute;
-
-    left:45px;
-    top:0;
-
-    width:20px;
-    height:100%;
-
-    background:#ffd166;
-}
-
-.gift-lid{
-    position:absolute;
-
-    left:5px;
-    top:28px;
-
-    width:130px;
-    height:30px;
-
-    border-radius:10px;
+    border-radius:50%;
 
     background:
         linear-gradient(
             135deg,
             #ff758f,
-            #ff1744
+            #ff4d6d,
+            #c9184a
         );
 
-    z-index:2;
+    box-shadow:
+        0 15px 45px
+        rgba(201,24,74,.5),
+
+        inset
+        0 5px 12px
+        rgba(255,255,255,.5);
+
+    animation:
+        heartbeat
+        1.5s
+        infinite;
 }
 
-.gift-lid::after{
+.heart-btn::before{
+    content:"❤️";
+
+    font-size:50px;
+
+    filter:
+        drop-shadow(
+            0 4px 5px
+            rgba(0,0,0,.2)
+        );
+}
+
+.heart-btn::after{
     content:"";
 
     position:absolute;
 
-    left:55px;
-
-    width:20px;
-    height:30px;
-
-    background:#ffd166;
-}
-
-.ribbon{
-    position:absolute;
-
-    width:48px;
-    height:35px;
-
-    border:
-        8px solid
-        #ffd166;
+    inset:-12px;
 
     border-radius:50%;
 
-    top:0;
-
-    z-index:4;
-}
-
-.ribbon.left{
-    left:25px;
-
-    transform:rotate(-30deg);
-}
-
-.ribbon.right{
-    right:25px;
-
-    transform:rotate(30deg);
-}
-
-.open-text{
-    margin-top:30px;
-
-    color:#ffd6e0;
-
-    font-size:14px;
-
-    font-weight:bold;
-
-    letter-spacing:2px;
+    border:
+        2px solid
+        rgba(255,255,255,.5);
 
     animation:
-        pulseText
-        1.7s
+        heartRing
+        1.8s
         infinite;
 }
 
-@keyframes pulseText{
+@keyframes heartbeat{
 
-    50%{
-        opacity:.4;
+    0%,
+    100%{
+        transform:scale(1);
+    }
+
+    15%{
+        transform:scale(1.15);
+    }
+
+    30%{
+        transform:scale(1);
+    }
+
+    45%{
+        transform:scale(1.08);
+    }
+
+    60%{
+        transform:scale(1);
     }
 }
 
-/* =========================
-   NỘI DUNG
-========================= */
+@keyframes heartRing{
 
-#content{
+    0%{
+        transform:scale(.8);
+        opacity:.8;
+    }
+
+    100%{
+        transform:scale(1.5);
+        opacity:0;
+    }
+}
+
+.hint-text{
+    margin-top:22px;
+
+    color:#a4133c;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    animation:
+        hint
+        2s
+        ease-in-out
+        infinite;
+}
+
+@keyframes hint{
+
+    0%,100%{
+        opacity:.45;
+    }
+
+    50%{
+        opacity:1;
+    }
+}
+
+/* =====================================================
+   NỘI DUNG
+===================================================== */
+
+#contentBox{
     position:relative;
 
-    z-index:20;
-
     width:100%;
+
+    text-align:center;
+
+    z-index:8;
 
     opacity:0;
 
     transform:
         translateY(30px)
-        scale(.95);
-
-    transition:
-        opacity 1s ease,
-        transform 1s ease;
+        scale(.94);
 
     pointer-events:none;
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s
+        cubic-bezier(.16,1,.3,1);
 }
 
-#content.show{
+#contentBox.show{
     opacity:1;
 
     transform:
@@ -452,80 +394,154 @@ body{
     pointer-events:auto;
 }
 
-.small-title{
-    margin-bottom:10px;
+/* =====================================================
+   TIÊU ĐỀ
+===================================================== */
 
-    color:#ffb3c1;
+.wish-title{
+    font-family:
+        Georgia,
+        serif;
 
-    font-size:15px;
-
-    font-weight:bold;
-
-    letter-spacing:3px;
-}
-
-h1{
     font-size:
         clamp(
-            42px,
-            11vw,
-            82px
+            20px,
+            4vw,
+            30px
         );
 
-    line-height:.95;
+    color:#ff758f;
+
+    margin-bottom:2px;
+}
+
+.main-title{
+    font-size:
+        clamp(
+            45px,
+            11vw,
+            76px
+        );
 
     font-weight:900;
+
+    line-height:.95;
 
     background:
         linear-gradient(
             135deg,
-            #ffffff,
-            #ffb3c1,
-            #ff4d6d
+            #a4133c,
+            #ff4d6d,
+            #ff758f
         );
 
     -webkit-background-clip:text;
     background-clip:text;
 
-    color:transparent;
+    -webkit-text-fill-color:transparent;
+
+    letter-spacing:-2px;
 
     text-shadow:
-        0 0 30px
-        rgba(255,80,130,.35);
+        0 8px 25px
+        rgba(164,19,60,.12);
 }
 
-.subtitle{
-    margin-top:18px;
+.sub-title{
+    margin-top:14px;
 
-    color:#fce7f3;
+    color:#590d22;
 
-    font-size:13px;
+    font-size:11px;
+
+    font-weight:800;
 
     letter-spacing:2px;
 
-    font-weight:bold;
+    text-transform:uppercase;
 }
 
-#wish{
-    min-height:25px;
+.date-title{
+    margin-top:8px;
 
-    margin-top:20px;
+    color:#c9184a;
 
-    color:#fbcfe8;
+    font-size:15px;
 
-    font-size:14px;
+    font-weight:800;
 
-    transition:.3s;
+    letter-spacing:1px;
 }
 
-/* =========================
+/* =====================================================
    ĐỒNG HỒ
-========================= */
+===================================================== */
 
-#clock{
+.countdown{
     display:flex;
 
     justify-content:center;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+    margin-top:22px;
+}
+
+.time-box{
+    min-width:68px;
+
+    padding:9px 8px;
+
+    border-radius:14px;
+
+    background:
+        rgba(255,255,255,.65);
+
+    border:
+        1px solid
+        rgba(255,117,143,.2);
+
+    box-shadow:
+        0 6px 15px
+        rgba(201,24,74,.08);
+}
+
+.time-number{
+    display:block;
+
+    color:#a4133c;
+
+    font-size:23px;
+
+    font-weight:900;
+}
+
+.time-label{
+    display:block;
+
+    margin-top:2px;
+
+    color:#c9184a;
+
+    font-size:8px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+}
+
+/* =====================================================
+   NÚT CHỨC NĂNG
+===================================================== */
+
+.buttons{
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
 
     flex-wrap:wrap;
 
@@ -534,67 +550,15 @@ h1{
     margin-top:20px;
 }
 
-.time{
-    min-width:65px;
-
-    padding:10px;
-
-    border-radius:15px;
-
-    background:
-        rgba(255,255,255,.08);
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-}
-
-.time strong{
-    display:block;
-
-    font-size:22px;
-
-    color:white;
-}
-
-.time span{
-    display:block;
-
-    margin-top:3px;
-
-    color:#f9a8d4;
-
-    font-size:9px;
-
-    font-weight:bold;
-}
-
-/* =========================
-   NÚT
-========================= */
-
-.buttons{
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:9px;
-
-    margin-top:28px;
-}
-
 .btn{
+    border:none;
+
     padding:
-        12px
-        17px;
+        10px 15px;
 
-    border:0;
+    border-radius:999px;
 
-    border-radius:100px;
-
-    color:white;
+    color:#fff;
 
     background:
         linear-gradient(
@@ -603,23 +567,29 @@ h1{
             #c9184a
         );
 
-    font-size:12px;
+    font-size:11px;
 
-    font-weight:bold;
+    font-weight:800;
 
     cursor:pointer;
 
     box-shadow:
-        0 8px 25px
-        rgba(201,24,74,.3);
+        0 8px 20px
+        rgba(201,24,74,.25);
 
-    transition:.25s;
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
 }
 
 .btn:hover{
     transform:
         translateY(-3px)
         scale(1.03);
+
+    box-shadow:
+        0 12px 25px
+        rgba(201,24,74,.35);
 }
 
 .btn:active{
@@ -627,20 +597,52 @@ h1{
 }
 
 .btn.secondary{
+    color:#a4133c;
+
     background:
-        rgba(255,255,255,.1);
+        rgba(255,255,255,.7);
 
     border:
         1px solid
-        rgba(255,255,255,.15);
+        rgba(201,24,74,.15);
 }
 
-/* =========================
-   MODAL
-========================= */
+/* =====================================================
+   NÚT ÂM THANH
+===================================================== */
 
-#cakeModal,
-#letterModal{
+#soundButton{
+    position:absolute;
+
+    top:15px;
+    right:15px;
+
+    z-index:100;
+
+    width:42px;
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.65);
+
+    cursor:pointer;
+
+    font-size:19px;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0,0,0,.08);
+}
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal{
     position:fixed;
 
     inset:0;
@@ -653,109 +655,156 @@ h1{
     padding:20px;
 
     background:
-        rgba(0,0,0,.72);
+        rgba(40,0,20,.5);
 
-    backdrop-filter:blur(12px);
+    backdrop-filter:
+        blur(10px);
 
-    z-index:500;
+    z-index:1000;
 }
 
-/* =========================
-   BÁNH
-========================= */
+.modal.show{
+    display:flex;
+}
 
-.cake-box{
-    width:min(92vw,420px);
+.modal-box{
+    width:
+        min(92vw,480px);
 
-    padding:30px 20px;
+    max-height:
+        90vh;
 
-    border-radius:30px;
+    overflow:auto;
+
+    padding:28px;
+
+    border-radius:25px;
 
     background:
         linear-gradient(
             145deg,
-            #3b0764,
-            #701a75
+            #fff,
+            #fff0f3
         );
+
+    color:#590d22;
 
     text-align:center;
 
     box-shadow:
         0 30px 80px
-        rgba(0,0,0,.5);
+        rgba(0,0,0,.3);
 
     animation:
         modalIn
-        .5s
+        .4s
         ease;
 }
 
 @keyframes modalIn{
 
     from{
-        transform:
-            scale(.7)
-            translateY(30px);
-
         opacity:0;
+
+        transform:
+            scale(.75)
+            translateY(30px);
     }
 
     to{
-        transform:scale(1);
-
         opacity:1;
+
+        transform:
+            scale(1)
+            translateY(0);
     }
 }
+
+.modal-box h2{
+    color:#c9184a;
+
+    font-size:25px;
+
+    margin-bottom:12px;
+}
+
+.modal-box p{
+    line-height:1.7;
+
+    font-size:14px;
+}
+
+/* =====================================================
+   BÁNH
+===================================================== */
 
 .cake{
     position:relative;
 
-    width:220px;
-    height:180px;
+    width:230px;
+    height:190px;
 
-    margin:25px auto;
+    margin:20px auto;
 }
 
-.cake-base{
+.cake-body{
     position:absolute;
 
-    left:10px;
-    bottom:0;
+    left:15px;
+    bottom:15px;
 
     width:200px;
-    height:80px;
+    height:75px;
 
     border-radius:
-        15px
-        15px
-        25px
-        25px;
+        12px 12px 22px 22px;
 
     background:
         linear-gradient(
-            #ff8fab,
-            #ff4d6d
+            #ff758f,
+            #e11d48
         );
+
+    box-shadow:
+        inset 0 8px 10px
+        rgba(255,255,255,.3);
 }
 
 .cake-cream{
     position:absolute;
 
     left:25px;
-    bottom:65px;
+    bottom:70px;
 
-    width:170px;
+    width:180px;
     height:45px;
 
     border-radius:50%;
 
-    background:white;
+    background:#fff;
+
+    box-shadow:
+        0 5px 8px
+        rgba(0,0,0,.08);
+}
+
+.cake-cream::after{
+    content:"🍓 🍓 🍓";
+
+    position:absolute;
+
+    left:0;
+    right:0;
+
+    top:-15px;
+
+    font-size:19px;
 }
 
 .candle{
     position:absolute;
 
-    left:95px;
+    left:100px;
     bottom:105px;
 
     width:30px;
@@ -766,441 +815,724 @@ h1{
     background:
         repeating-linear-gradient(
             45deg,
-            #fff,
-            #fff 7px,
-            #ff4d6d 7px,
-            #ff4d6d 14px
+            #fff 0 7px,
+            #ff4d6d 7px 14px
         );
+
+    z-index:5;
 }
 
 .flame{
     position:absolute;
 
     left:100px;
-    bottom:158px;
+    bottom:155px;
 
-    width:20px;
-    height:30px;
+    width:30px;
+    height:40px;
+
+    z-index:10;
 
     background:
         radial-gradient(
-            circle at 50% 70%,
-            #fff 0 20%,
+            ellipse at center bottom,
+            #fff 0 15%,
             #ffd166 25%,
-            #ff7b00 60%,
+            #ff7b00 55%,
             transparent 65%
         );
 
     animation:
         flame
-        .3s
+        .25s
         infinite
         alternate;
 }
 
 @keyframes flame{
 
+    from{
+        transform:
+            scale(.9)
+            rotate(-3deg);
+    }
+
     to{
         transform:
-            scale(1.15)
+            scale(1.12)
             rotate(3deg);
     }
 }
 
-/* =========================
+/* =====================================================
    THƯ
-========================= */
+===================================================== */
 
-.letter{
-    width:min(92vw,500px);
+.letter-text{
+    text-align:left;
 
-    padding:32px;
+    margin-top:15px;
 
-    border-radius:25px;
+    line-height:1.9;
 
-    background:
-        linear-gradient(
-            145deg,
-            #fff7ed,
-            #ffe4e6
-        );
+    color:#590d22;
+}
 
-    color:#5b2133;
+/* =====================================================
+   BÓNG BAY
+===================================================== */
 
-    box-shadow:
-        0 30px 80px
-        rgba(0,0,0,.5);
+.balloon{
+    position:fixed;
+
+    bottom:-120px;
+
+    width:35px;
+    height:45px;
+
+    border-radius:
+        50% 50%
+        45% 45%;
+
+    z-index:4;
+
+    pointer-events:none;
 
     animation:
-        modalIn
-        .5s
-        ease;
+        balloonUp
+        linear
+        forwards;
 }
 
-.letter h2{
-    margin-bottom:18px;
+.balloon::after{
+    content:"";
 
-    color:#be123c;
+    position:absolute;
+
+    top:43px;
+    left:50%;
+
+    width:1px;
+    height:90px;
+
+    background:
+        rgba(80,40,50,.35);
 }
 
-.letter p{
-    font-size:15px;
+@keyframes balloonUp{
 
-    line-height:1.8;
+    to{
+        bottom:110%;
+        transform:
+            translateX(
+                calc(
+                    (var(--drift))
+                )
+            )
+            rotate(8deg);
+    }
 }
 
-/* =========================
+/* =====================================================
+   TOAST
+===================================================== */
+
+#toast{
+    position:fixed;
+
+    left:50%;
+    bottom:25px;
+
+    transform:
+        translateX(-50%)
+        translateY(30px);
+
+    padding:
+        12px 20px;
+
+    border-radius:999px;
+
+    color:#fff;
+
+    background:
+        rgba(80,10,35,.85);
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:2000;
+
+    transition:.35s;
+}
+
+#toast.show{
+    opacity:1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+/* =====================================================
+   CHẾ ĐỘ TỐI
+===================================================== */
+
+body.dark{
+    background:
+        radial-gradient(
+            circle at center,
+            #3b0764,
+            #1e1b4b 40%,
+            #020617
+        );
+}
+
+body.dark
+.card-container{
+    background:
+        rgba(20,10,30,.65);
+
+    border-color:
+        rgba(255,255,255,.12);
+}
+
+body.dark
+.sub-title,
+body.dark
+.date-title{
+    color:#ffd6e0;
+}
+
+body.dark
+.time-box{
+    background:
+        rgba(255,255,255,.08);
+}
+
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media(max-width:600px){
 
-    .card{
-        min-height:590px;
+    body{
+        overflow:hidden;
+    }
+
+    .card-container{
+
+        width:
+            calc(100vw - 24px);
+
+        min-height:
+            calc(100vh - 30px);
+
+        max-height:
+            calc(100vh - 30px);
 
         padding:
-            35px
-            15px;
+            25px 13px;
+
+        border-radius:25px;
     }
 
-    .small-title{
-        font-size:12px;
+    #contentBox{
+        max-height:
+            100%;
 
-        letter-spacing:2px;
+        overflow:
+            hidden auto;
+
+        padding:
+            20px 2px;
     }
 
-    .subtitle{
-        font-size:10px;
+    .heart-btn{
+        width:90px;
+        height:90px;
+    }
+
+    .heart-btn::before{
+        font-size:42px;
+    }
+
+    .hint-text{
+        font-size:11px;
+    }
+
+    .wish-title{
+        font-size:20px;
+    }
+
+    .main-title{
+        font-size:
+            clamp(
+                40px,
+                13vw,
+                62px
+            );
+    }
+
+    .sub-title{
+        font-size:9px;
 
         letter-spacing:1px;
     }
 
-    #wish{
-        font-size:12px;
+    .date-title{
+        font-size:13px;
+    }
+
+    .countdown{
+        gap:5px;
+
+        margin-top:16px;
+    }
+
+    .time-box{
+        min-width:60px;
+
+        padding:
+            7px 5px;
+    }
+
+    .time-number{
+        font-size:19px;
+    }
+
+    .buttons{
+        margin-top:16px;
+
+        gap:6px;
     }
 
     .btn{
         padding:
-            10px
-            13px;
+            9px 11px;
 
-        font-size:11px;
+        font-size:10px;
     }
 
-    .tool{
+    #soundButton{
         width:38px;
         height:38px;
+
+        top:10px;
+        right:10px;
     }
 
-    #toolbar{
-        top:8px;
-        right:8px;
+    .modal-box{
+        padding:22px 17px;
+    }
+}
+
+@media(max-height:700px){
+
+    .card-container{
+        min-height:
+            calc(100vh - 20px);
+
+        max-height:
+            calc(100vh - 20px);
+    }
+
+    .main-title{
+        font-size:43px;
+    }
+
+    .countdown{
+        margin-top:12px;
+    }
+
+    .buttons{
+        margin-top:12px;
     }
 }
 </style>
 </head>
 
-
 <body>
 
-<!-- =========================
-     NỀN
-========================= -->
+<!-- =====================================================
+     NỀN SAO
+===================================================== -->
 
-<div id="background"></div>
-
-<canvas id="canvas"></canvas>
+<div id="bgParticles"></div>
 
 
-<!-- =========================
-     CÔNG CỤ
-========================= -->
+<!-- =====================================================
+     CARD
+===================================================== -->
 
-<div id="toolbar">
+<div class="card-container">
+
+    <!-- ÂM THANH -->
 
     <button
-        class="tool"
-        id="soundBtn">
+        id="soundButton"
+        title="Bật / tắt âm thanh">
         🔊
     </button>
 
-    <button
-        class="tool"
-        id="themeBtn">
-        🌙
-    </button>
 
-</div>
+    <!-- CANVAS -->
+
+    <canvas id="canvas"></canvas>
 
 
-<!-- =========================
-     APP
-========================= -->
+    <!-- =================================================
+         TRÁI TIM MỞ QUÀ
+    ================================================== -->
 
-<div id="app">
+    <div id="heartWrapper">
 
-<div class="card">
+        <div class="heart-btn"></div>
 
-
-<!-- =========================
-     HỘP QUÀ
-========================= -->
-
-<div id="opening">
-
-    <div id="gift">
-
-        <div class="ribbon left"></div>
-
-        <div class="ribbon right"></div>
-
-        <div class="gift-lid"></div>
-
-        <div class="gift-box"></div>
-
-    </div>
-
-    <div class="open-text">
-        🎁 CHẠM VÀO HỘP QUÀ 🎁
-    </div>
-
-</div>
-
-
-<!-- =========================
-     NỘI DUNG
-========================= -->
-
-<div id="content">
-
-    <div class="small-title">
-        ✨ NGÀY 24 THÁNG 8 ✨
-    </div>
-
-    <h1>
-        CHÚC MỪNG<br>
-        SINH NHẬT
-    </h1>
-
-    <div class="subtitle">
-        🎂 CHÚC BẠN MỘT TUỔI MỚI THẬT RỰC RỠ 🎂
-    </div>
-
-    <div id="wish">
-        Mong mọi điều tốt đẹp nhất
-        sẽ đến với bạn 💖
-    </div>
-
-
-    <!-- =========================
-         ĐỒNG HỒ
-    ========================= -->
-
-    <div id="clock">
-
-        <div class="time">
-            <strong id="days">00</strong>
-            <span>NGÀY</span>
-        </div>
-
-        <div class="time">
-            <strong id="hours">00</strong>
-            <span>GIỜ</span>
-        </div>
-
-        <div class="time">
-            <strong id="minutes">00</strong>
-            <span>PHÚT</span>
-        </div>
-
-        <div class="time">
-            <strong id="seconds">00</strong>
-            <span>GIÂY</span>
+        <div class="hint-text">
+            CHẠM ĐỂ MỞ QUÀ ✨
         </div>
 
     </div>
 
 
-    <!-- =========================
-         CÁC CHỨC NĂNG
-    ========================= -->
+    <!-- =================================================
+         NỘI DUNG SAU KHI MỞ
+    ================================================== -->
 
-    <div class="buttons">
+    <div
+        id="contentBox"
+        class="content-box">
 
-        <button
-            class="btn"
-            id="fireworkBtn">
-            🎆 Pháo hoa
-        </button>
+        <p class="wish-title">
+            ✨ Một ngày thật đặc biệt ✨
+        </p>
 
-        <button
-            class="btn"
-            id="cakeBtn">
-            🎂 Bánh sinh nhật
-        </button>
+        <h1 class="main-title">
+            CHÚC MỪNG<br>
+            SINH NHẬT
+        </h1>
 
-        <button
-            class="btn"
-            id="letterBtn">
-            💌 Mở thư
-        </button>
+        <p class="sub-title">
+            🎂 CHÚC BẠN MỘT TUỔI MỚI THẬT RỰC RỠ 🎂
+        </p>
 
-        <button
-            class="btn secondary"
-            id="loveBtn">
-            💖 Điều ước
-        </button>
+        <p class="date-title">
+            💖 NGÀY 24 THÁNG 8 💖
+        </p>
 
-        <button
-            class="btn secondary"
-            id="replayBtn">
-            🔄 Chơi lại
-        </button>
+
+        <!-- ĐẾM NGƯỢC -->
+
+        <div class="countdown">
+
+            <div class="time-box">
+
+                <span
+                    id="days"
+                    class="time-number">
+                    00
+                </span>
+
+                <span class="time-label">
+                    NGÀY
+                </span>
+
+            </div>
+
+
+            <div class="time-box">
+
+                <span
+                    id="hours"
+                    class="time-number">
+                    00
+                </span>
+
+                <span class="time-label">
+                    GIỜ
+                </span>
+
+            </div>
+
+
+            <div class="time-box">
+
+                <span
+                    id="minutes"
+                    class="time-number">
+                    00
+                </span>
+
+                <span class="time-label">
+                    PHÚT
+                </span>
+
+            </div>
+
+
+            <div class="time-box">
+
+                <span
+                    id="seconds"
+                    class="time-number">
+                    00
+                </span>
+
+                <span class="time-label">
+                    GIÂY
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- LỜI CHÚC -->
+
+        <p id="wishText"
+           style="
+           margin-top:16px;
+           color:#8f1239;
+           font-size:13px;
+           font-weight:600;
+           min-height:20px;
+           ">
+
+            Mong mọi điều tốt đẹp nhất
+            sẽ đến với bạn ❤️
+
+        </p>
+
+
+        <!-- NÚT -->
+
+        <div class="buttons">
+
+            <button
+                class="btn"
+                id="fireworkBtn">
+                🎆 PHÁO HOA
+            </button>
+
+            <button
+                class="btn"
+                id="cakeBtn">
+                🎂 BÁNH
+            </button>
+
+            <button
+                class="btn"
+                id="letterBtn">
+                💌 LỜI CHÚC
+            </button>
+
+            <button
+                class="btn secondary"
+                id="wishBtn">
+                ✨ ĐIỀU ƯỚC
+            </button>
+
+            <button
+                class="btn secondary"
+                id="balloonBtn">
+                🎈 BÓNG BAY
+            </button>
+
+            <button
+                class="btn secondary"
+                id="replayBtn">
+                🔄 LẠI TỪ ĐẦU
+            </button>
+
+        </div>
 
     </div>
 
 </div>
 
-</div>
 
-</div>
-
-
-<!-- =========================
+<!-- =====================================================
      MODAL BÁNH
-========================= -->
+===================================================== -->
 
-<div id="cakeModal">
+<div
+    id="cakeModal"
+    class="modal">
 
-<div class="cake-box">
+    <div class="modal-box">
 
-    <h2>
-        🎂 BÁNH SINH NHẬT 🎂
-    </h2>
+        <h2>
+            🎂 BÁNH SINH NHẬT 🎂
+        </h2>
 
-    <p>
-        Hãy ước một điều thật đẹp nhé!
-    </p>
+        <p>
+            Hãy nhắm mắt và ước một điều thật đẹp nhé!
+        </p>
 
-    <div class="cake">
 
-        <div
-            class="flame"
-            id="flame">
+        <div class="cake">
+
+            <div
+                id="flame"
+                class="flame">
+            </div>
+
+            <div class="candle"></div>
+
+            <div class="cake-cream"></div>
+
+            <div class="cake-body"></div>
+
         </div>
 
-        <div class="candle"></div>
 
-        <div class="cake-cream"></div>
+        <button
+            id="blowBtn"
+            class="btn">
 
-        <div class="cake-base"></div>
+            🕯️ THỔI NẾN
+
+        </button>
+
+
+        <button
+            id="closeCake"
+            class="btn secondary">
+
+            ĐÓNG
+
+        </button>
 
     </div>
 
-    <button
-        class="btn"
-        id="blowBtn">
-        🕯️ Thổi nến
-    </button>
-
-    <button
-        class="btn secondary"
-        id="closeCake">
-        Đóng
-    </button>
-
-</div>
-
 </div>
 
 
-<!-- =========================
-     MODAL THƯ
-========================= -->
+<!-- =====================================================
+     MODAL LỜI CHÚC
+===================================================== -->
 
-<div id="letterModal">
+<div
+    id="letterModal"
+    class="modal">
 
-<div class="letter">
+    <div class="modal-box">
 
-    <h2>
-        💌 Gửi bạn
-    </h2>
+        <h2>
+            💌 LỜI CHÚC SINH NHẬT
+        </h2>
 
-    <p>
+        <div class="letter-text">
 
-        Chúc bạn có một sinh nhật
-        thật đáng nhớ.
+            <p>
+                Chúc bạn có một sinh nhật
+                thật vui vẻ và đáng nhớ! 🎂
+            </p>
 
-        <br><br>
+            <br>
 
-        Tuổi mới không chỉ thêm
-        một con số, mà còn thêm
-        thật nhiều trải nghiệm,
-        những người tuyệt vời,
-        những chuyến đi đáng nhớ
-        và thật nhiều khoảnh khắc
-        khiến bạn mỉm cười.
+            <p>
+                Tuổi mới, mong bạn có thật
+                nhiều sức khỏe, niềm vui,
+                may mắn và những người
+                thật lòng yêu thương mình.
+            </p>
 
-        <br><br>
+            <br>
 
-        Mong rằng những điều bạn
-        đang cố gắng sẽ từng bước
-        trở thành hiện thực.
+            <p>
+                Mong những điều bạn đang
+                cố gắng sẽ từng bước trở
+                thành hiện thực.
+            </p>
 
-        <br><br>
+            <br>
 
-        Và quan trọng nhất...
+            <p>
+                Mong mỗi ngày đều có một
+                lý do để bạn mỉm cười. 🌸
+            </p>
 
-        <br><br>
+            <br>
 
-        <strong>
-            Hãy luôn vui vẻ,
-            yêu bản thân
-            và sống thật rực rỡ nhé! ❤️
-        </strong>
+            <p>
+                Và đặc biệt...
+            </p>
 
-    </p>
+            <br>
 
-    <br>
+            <p>
+                <strong>
+                    Chúc tuổi mới của bạn
+                    thật rực rỡ! ❤️✨
+                </strong>
+            </p>
 
-    <button
-        class="btn"
-        id="closeLetter">
-        ❤️ Đóng thư
-    </button>
+        </div>
+
+        <br>
+
+        <button
+            id="closeLetter"
+            class="btn">
+
+            ❤️ ĐÓNG
+
+        </button>
+
+    </div>
 
 </div>
 
-</div>
+
+<!-- TOAST -->
+
+<div id="toast"></div>
 
 
 <script>
 
-/* =========================================================
-   CANVAS
-========================================================= */
+/* =====================================================
+   LẤY ELEMENT
+===================================================== */
+
+const heartWrapper =
+    document.getElementById(
+        "heartWrapper"
+    );
+
+const contentBox =
+    document.getElementById(
+        "contentBox"
+    );
 
 const canvas =
-    document.getElementById("canvas");
+    document.getElementById(
+        "canvas"
+    );
 
 const ctx =
     canvas.getContext("2d");
 
+const toast =
+    document.getElementById(
+        "toast"
+    );
+
+
+/* =====================================================
+   CANVAS RETINA
+===================================================== */
+
 let W = 0;
 let H = 0;
 
-let particles = [];
-let hearts = [];
-let balloons = [];
-
-let opened = false;
-
-
-/* =========================================================
-   RESIZE
-========================================================= */
-
-function resize(){
+function setupCanvas(){
 
     const dpr =
         Math.min(
@@ -1209,22 +1541,16 @@ function resize(){
         );
 
     W =
-        window.innerWidth;
+        canvas.offsetWidth;
 
     H =
-        window.innerHeight;
+        canvas.offsetHeight;
 
     canvas.width =
         W * dpr;
 
     canvas.height =
         H * dpr;
-
-    canvas.style.width =
-        W + "px";
-
-    canvas.style.height =
-        H + "px";
 
     ctx.setTransform(
         dpr,
@@ -1236,24 +1562,28 @@ function resize(){
     );
 }
 
-resize();
+setupCanvas();
 
 window.addEventListener(
     "resize",
-    resize
+    setupCanvas
 );
 
 
-/* =========================================================
-   SAO
-========================================================= */
+/* =====================================================
+   SAO NỀN
+===================================================== */
 
-const background =
+const bg =
     document.getElementById(
-        "background"
+        "bgParticles"
     );
 
-for(let i=0;i<100;i++){
+for(
+    let i=0;
+    i<80;
+    i++
+){
 
     const star =
         document.createElement(
@@ -1261,7 +1591,7 @@ for(let i=0;i<100;i++){
         );
 
     star.className =
-        "star";
+        "bg-star";
 
     star.style.left =
         Math.random()*100 +
@@ -1275,25 +1605,18 @@ for(let i=0;i<100;i++){
         Math.random()*3 +
         "s";
 
-    star.style.animationDuration =
-        1 +
-        Math.random()*3 +
-        "s";
-
-    background.appendChild(star);
+    bg.appendChild(star);
 }
 
 
-/* =========================================================
-   ÂM THANH
-========================================================= */
-
-let soundEnabled =
-    localStorage.getItem(
-        "birthdaySound"
-    ) !== "off";
+/* =====================================================
+   ÂM THANH WEB AUDIO
+===================================================== */
 
 let audioContext = null;
+
+let soundEnabled = true;
+
 
 function initAudio(){
 
@@ -1308,22 +1631,19 @@ function initAudio(){
                 window.webkitAudioContext
             )();
 
-    }
-    catch(e){
+    }catch(e){
 
-        console.log(
-            "Trình duyệt không hỗ trợ âm thanh."
-        );
+        audioContext=null;
 
     }
 }
 
 
-function tone(
+function playTone(
     frequency,
     duration=.15,
     type="sine",
-    volume=.05
+    volume=.04
 ){
 
     if(!soundEnabled)
@@ -1334,162 +1654,176 @@ function tone(
     if(!audioContext)
         return;
 
-    try{
+    if(
+        audioContext.state ===
+        "suspended"
+    ){
 
-        if(
-            audioContext.state ===
-            "suspended"
-        ){
-
-            audioContext.resume();
-
-        }
-
-        const osc =
-            audioContext
-            .createOscillator();
-
-        const gain =
-            audioContext
-            .createGain();
-
-        osc.type =
-            type;
-
-        osc.frequency.value =
-            frequency;
-
-        gain.gain.setValueAtTime(
-            volume,
-            audioContext.currentTime
-        );
-
-        gain.gain.exponentialRampToValueAtTime(
-            .001,
-            audioContext.currentTime +
-            duration
-        );
-
-        osc.connect(gain);
-
-        gain.connect(
-            audioContext.destination
-        );
-
-        osc.start();
-
-        osc.stop(
-            audioContext.currentTime +
-            duration
-        );
+        audioContext.resume();
 
     }
-    catch(e){}
+
+    const oscillator =
+        audioContext.createOscillator();
+
+    const gain =
+        audioContext.createGain();
+
+    oscillator.type =
+        type;
+
+    oscillator.frequency.value =
+        frequency;
+
+    gain.gain.setValueAtTime(
+        volume,
+        audioContext.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .001,
+        audioContext.currentTime +
+        duration
+    );
+
+    oscillator.connect(gain);
+
+    gain.connect(
+        audioContext.destination
+    );
+
+    oscillator.start();
+
+    oscillator.stop(
+        audioContext.currentTime +
+        duration
+    );
 }
 
 
-function openSound(){
+/* âm thanh mở quà */
 
-    tone(
-        261,
-        .15,
+function playOpenSound(){
+
+    playTone(
+        261.63,
+        .18,
         "sine",
-        .08
+        .07
     );
 
     setTimeout(
-        () => tone(
-            329,
-            .15,
+        () => playTone(
+            329.63,
+            .18,
             "sine",
-            .08
+            .07
         ),
         100
     );
 
     setTimeout(
-        () => tone(
+        () => playTone(
             392,
-            .25,
+            .18,
             "sine",
-            .08
+            .07
         ),
         200
     );
 
     setTimeout(
-        () => tone(
-            523,
-            .4,
+        () => playTone(
+            523.25,
+            .5,
             "sine",
-            .09
+            .08
         ),
-        330
+        300
     );
+
 }
 
 
-function clickSound(){
+/* âm thanh click */
 
-    tone(
+function playClick(){
+
+    playTone(
         700,
         .08,
         "triangle",
-        .035
+        .04
     );
+
 }
 
 
-function fireworkSound(){
+/* âm thanh pháo */
 
-    tone(
-        90,
-        .35,
+function playExplosionSound(){
+
+    playTone(
+        100,
+        .25,
         "sawtooth",
-        .03
+        .025
     );
 
     setTimeout(
-        () => tone(
-            700,
+        () => playTone(
+            650,
             .15,
             "sine",
-            .04
+            .035
         ),
         100
     );
+
 }
 
 
-/* =========================================================
-   PHÁO HOA
-========================================================= */
+/* =====================================================
+   PARTICLES
+===================================================== */
 
-function explosion(x,y){
+let particles = [];
+
+let animationStarted = false;
+
+
+/* =====================================================
+   PHÁO HOA
+===================================================== */
+
+function createExplosion(
+    x,
+    y
+){
 
     const colors = [
         "#ff4d6d",
+        "#ff758f",
         "#ffd166",
         "#ffffff",
         "#c77dff",
-        "#4cc9f0",
-        "#ff9f1c"
+        "#4cc9f0"
     ];
+
 
     for(
         let i=0;
-        i<70;
+        i<80;
         i++
     ){
 
         const angle =
             Math.random() *
-            Math.PI *
-            2;
+            Math.PI * 2;
 
         const speed =
-            2 +
-            Math.random() * 7;
+            1.5 +
+            Math.random()*6;
 
         particles.push({
 
@@ -1504,11 +1838,13 @@ function explosion(x,y){
                 Math.sin(angle) *
                 speed,
 
+            gravity:.035,
+
             life:1,
 
             decay:
                 .008 +
-                Math.random()*.018,
+                Math.random()*.015,
 
             size:
                 1 +
@@ -1526,70 +1862,44 @@ function explosion(x,y){
 
     }
 
-    fireworkSound();
+
+    playExplosionSound();
+
 }
 
 
-/* =========================================================
-   PHÁO HOA TỰ ĐỘNG
-========================================================= */
+/* =====================================================
+   TIM
+===================================================== */
 
-function automaticFirework(){
-
-    if(!opened)
-        return;
-
-    explosion(
-
-        W *
-        (.15 +
-        Math.random()*.7),
-
-        H *
-        (.15 +
-        Math.random()*.5)
-
-    );
-
-    setTimeout(
-        automaticFirework,
-        2500 +
-        Math.random()*3500
-    );
-}
+let floatingHearts = [];
 
 
-/* =========================================================
-   TRÁI TIM
-========================================================= */
+function createFloatingHeart(){
 
-function createHeart(){
-
-    hearts.push({
+    floatingHearts.push({
 
         x:
             Math.random()*W,
 
         y:
-            H+30,
+            H+20,
 
         size:
-            10 +
-            Math.random()*18,
+            8 +
+            Math.random()*15,
 
         speed:
-            .7 +
-            Math.random()*1.5,
-
-        drift:
-            (Math.random()-.5)*.6,
+            .5 +
+            Math.random()*1.2,
 
         opacity:1,
 
-        rotation:
-            Math.random()*Math.PI
+        drift:
+            (Math.random()-.5)*.7
 
     });
+
 }
 
 
@@ -1597,8 +1907,7 @@ function drawHeart(
     x,
     y,
     size,
-    opacity,
-    rotation
+    opacity
 ){
 
     ctx.save();
@@ -1606,10 +1915,6 @@ function drawHeart(
     ctx.translate(
         x,
         y
-    );
-
-    ctx.rotate(
-        rotation
     );
 
     ctx.globalAlpha =
@@ -1622,83 +1927,342 @@ function drawHeart(
 
     ctx.moveTo(
         0,
-        size*.3
+        size*.35
     );
 
     ctx.bezierCurveTo(
-        -size,
-        -size*.3,
-        -size*.5,
+        -size*1.2,
+        -size*.35,
+        -size*.55,
         -size,
         0,
         -size*.45
     );
 
     ctx.bezierCurveTo(
-        size*.5,
+        size*.55,
         -size,
-        size,
-        -size*.3,
+        size*1.2,
+        -size*.35,
         0,
-        size*.3
+        size*.35
     );
 
     ctx.fill();
 
     ctx.restore();
+
 }
 
 
-/* =========================================================
-   BÓNG BAY
-========================================================= */
+/* =====================================================
+   HOA ANH ĐÀO
+===================================================== */
 
-function createBalloons(){
+let treeFlowers = [];
+
+
+function drawSakuraFlower(
+    x,
+    y
+){
+
+    const petals = 5;
+
+    const radius =
+        5 +
+        Math.random()*3;
+
+    ctx.save();
+
+    ctx.translate(
+        x,
+        y
+    );
+
 
     for(
         let i=0;
-        i<10;
+        i<petals;
         i++
     ){
 
-        balloons.push({
+        ctx.rotate(
+            Math.PI*2/petals
+        );
+
+        const gradient =
+            ctx.createRadialGradient(
+                0,
+                0,
+                0,
+                radius,
+                0,
+                radius
+            );
+
+        gradient.addColorStop(
+            0,
+            "#fff0f3"
+        );
+
+        gradient.addColorStop(
+            .5,
+            "#ffb3c1"
+        );
+
+        gradient.addColorStop(
+            1,
+            "#ff4d6d"
+        );
+
+        ctx.fillStyle =
+            gradient;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            radius/2,
+            0,
+            radius/2,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fill();
+
+    }
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+        0,
+        0,
+        2.5,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fillStyle =
+        "#ffb703";
+
+    ctx.fill();
+
+    ctx.restore();
+
+}
+
+
+/* =====================================================
+   CÂY
+===================================================== */
+
+let treeStarted = false;
+
+
+function startTreeAnimation(){
+
+    if(treeStarted)
+        return;
+
+    treeStarted=true;
+
+    const startX =
+        W*.18;
+
+    const startY =
+        H;
+
+    drawBranch(
+        startX,
+        startY,
+        100,
+        -Math.PI/2,
+        5
+    );
+
+}
+
+
+/* =====================================================
+   NHÁNH CÂY
+===================================================== */
+
+function drawBranch(
+    x,
+    y,
+    length,
+    angle,
+    width
+){
+
+    if(
+        length < 9
+    ){
+
+        treeFlowers.push({
+            x:x,
+            y:y
+        });
+
+        drawSakuraFlower(
+            x,
+            y
+        );
+
+        return;
+    }
+
+
+    const endX =
+        x +
+        length *
+        Math.cos(angle);
+
+    const endY =
+        y +
+        length *
+        Math.sin(angle);
+
+
+    const ctrlX =
+        (x+endX)/2 +
+        (Math.random()-.5)*20;
+
+    const ctrlY =
+        (y+endY)/2 +
+        (Math.random()-.5)*20;
+
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        x,
+        y
+    );
+
+    ctx.quadraticCurveTo(
+        ctrlX,
+        ctrlY,
+        endX,
+        endY
+    );
+
+
+    const gradient =
+        ctx.createLinearGradient(
+            x,
+            y,
+            endX,
+            endY
+        );
+
+    gradient.addColorStop(
+        0,
+        "#3d2926"
+    );
+
+    gradient.addColorStop(
+        1,
+        "#754936"
+    );
+
+    ctx.strokeStyle =
+        gradient;
+
+    ctx.lineWidth =
+        width;
+
+    ctx.lineCap =
+        "round";
+
+    ctx.stroke();
+
+
+    setTimeout(
+        () => {
+
+            const nextLength =
+                length *
+                (
+                    .65 +
+                    Math.random()*.12
+                );
+
+            drawBranch(
+                endX,
+                endY,
+                nextLength,
+                angle -
+                .38 -
+                Math.random()*.12,
+                width*.67
+            );
+
+            drawBranch(
+                endX,
+                endY,
+                nextLength,
+                angle +
+                .38 +
+                Math.random()*.12,
+                width*.67
+            );
+
+        },
+        90
+    );
+
+}
+
+
+/* =====================================================
+   LẤP LÁNH
+===================================================== */
+
+function createSparkles(){
+
+    for(
+        let i=0;
+        i<55;
+        i++
+    ){
+
+        particles.push({
+
+            sparkle:true,
 
             x:
                 Math.random()*W,
 
             y:
-                H +
                 Math.random()*H,
 
             size:
-                20 +
-                Math.random()*25,
+                Math.random()*2.5+1,
 
             speed:
-                .2 +
-                Math.random()*.5,
+                Math.random()*.4+.1,
 
-            color:[
-                "#ff4d6d",
-                "#c77dff",
-                "#4cc9f0",
-                "#ffd166",
-                "#ff8fab"
-            ][
-                Math.floor(
-                    Math.random()*5
-                )
-            ]
+            life:
+                Math.random(),
+
+            decay:
+                Math.random()*.01+.003,
+
+            color:"#ffd166"
 
         });
 
     }
+
 }
 
 
-/* =========================================================
-   ANIMATION
-========================================================= */
+/* =====================================================
+   ANIMATION CANVAS
+===================================================== */
 
 function animate(){
 
@@ -1710,49 +2274,103 @@ function animate(){
     );
 
 
+    /* particles */
+
     particles =
         particles.filter(
-            p => p.life > 0
+            p =>
+                p.sparkle ||
+                p.life>0
         );
 
 
     particles.forEach(
         p => {
 
-            p.x += p.vx;
+            if(
+                p.sparkle
+            ){
 
-            p.y += p.vy;
+                p.y -= p.speed;
 
-            p.vy += .035;
+                p.life -= p.decay;
 
-            p.life -= p.decay;
+                if(
+                    p.life<=0 ||
+                    p.y<0
+                ){
 
-            ctx.globalAlpha =
-                Math.max(
+                    p.y=H;
+
+                    p.x=
+                        Math.random()*W;
+
+                    p.life=1;
+
+                }
+
+                ctx.globalAlpha =
+                    p.life;
+
+                ctx.fillStyle =
+                    "#ffd166";
+
+                ctx.beginPath();
+
+                ctx.arc(
+                    p.x,
+                    p.y,
+                    p.size,
                     0,
-                    p.life
+                    Math.PI*2
                 );
 
-            ctx.fillStyle =
-                p.color;
+                ctx.fill();
 
-            ctx.beginPath();
+            }
 
-            ctx.arc(
-                p.x,
-                p.y,
-                p.size,
-                0,
-                Math.PI*2
-            );
+            else{
 
-            ctx.fill();
+                p.x += p.vx;
+
+                p.y += p.vy;
+
+                p.vy +=
+                    p.gravity;
+
+                p.life -=
+                    p.decay;
+
+                ctx.globalAlpha =
+                    Math.max(
+                        0,
+                        p.life
+                    );
+
+                ctx.fillStyle =
+                    p.color;
+
+                ctx.beginPath();
+
+                ctx.arc(
+                    p.x,
+                    p.y,
+                    p.size,
+                    0,
+                    Math.PI*2
+                );
+
+                ctx.fill();
+
+            }
 
         }
     );
 
 
-    hearts.forEach(
+    /* tim */
+
+    floatingHearts.forEach(
         h => {
 
             h.y -= h.speed;
@@ -1765,133 +2383,148 @@ function animate(){
                 h.x,
                 h.y,
                 h.size,
-                h.opacity,
-                h.rotation
+                h.opacity
             );
 
         }
     );
 
 
-    hearts =
-        hearts.filter(
+    floatingHearts =
+        floatingHearts.filter(
             h =>
-                h.y > -50 &&
-                h.opacity > 0
+                h.y>-50 &&
+                h.opacity>0
         );
-
-
-    balloons.forEach(
-        b => {
-
-            b.y -= b.speed;
-
-            if(
-                b.y < -100
-            ){
-
-                b.y =
-                    H + 50;
-
-                b.x =
-                    Math.random()*W;
-
-            }
-
-            ctx.globalAlpha =
-                .45;
-
-            ctx.fillStyle =
-                b.color;
-
-            ctx.beginPath();
-
-            ctx.ellipse(
-                b.x,
-                b.y,
-                b.size*.7,
-                b.size,
-                0,
-                0,
-                Math.PI*2
-            );
-
-            ctx.fill();
-
-            ctx.strokeStyle =
-                "rgba(255,255,255,.4)";
-
-            ctx.beginPath();
-
-            ctx.moveTo(
-                b.x,
-                b.y+b.size
-            );
-
-            ctx.lineTo(
-                b.x,
-                b.y+b.size+50
-            );
-
-            ctx.stroke();
-
-        }
-    );
 
 
     ctx.globalAlpha=1;
 
+
     requestAnimationFrame(
         animate
     );
+
 }
 
 animate();
 
 
-/* =========================================================
-   MỞ QUÀ
-========================================================= */
+/* =====================================================
+   MỞ QUÀ — QUAN TRỌNG
+===================================================== */
 
-function openGift(){
+heartWrapper.addEventListener(
+    "click",
+    function(){
 
-    if(opened)
-        return;
+        if(
+            contentBox.classList.contains(
+                "show"
+            )
+        ){
 
-    opened=true;
+            return;
 
-    initAudio();
+        }
 
-    openSound();
 
-    const opening =
-        document.getElementById(
-            "opening"
+        initAudio();
+
+        playOpenSound();
+
+
+        /* hiệu ứng trái tim */
+
+        heartWrapper.style.transform =
+            "scale(2.4)";
+
+        heartWrapper.style.opacity =
+            "0";
+
+
+        /* pháo hoa ngay khi bấm */
+
+        setTimeout(
+            () => {
+
+                createExplosion(
+                    W*.5,
+                    H*.35
+                );
+
+                createExplosion(
+                    W*.25,
+                    H*.45
+                );
+
+                createExplosion(
+                    W*.75,
+                    H*.45
+                );
+
+            },
+            150
         );
 
-    opening.style.opacity =
-        "0";
 
-    opening.style.transform =
-        "scale(1.4)";
+        /* ẩn trái tim */
 
+        setTimeout(
+            () => {
 
-    setTimeout(
-        () => {
+                heartWrapper.style.display =
+                    "none";
 
-            opening.style.display =
-                "none";
-
-            document
-                .getElementById(
-                    "content"
-                )
-                .classList.add(
+                contentBox.classList.add(
                     "show"
                 );
 
-            createBalloons();
 
+                /* bắt đầu cây */
+
+                startTreeAnimation();
+
+                createSparkles();
+
+
+                /* tim bay */
+
+                for(
+                    let i=0;
+                    i<20;
+                    i++
+                ){
+
+                    setTimeout(
+                        createFloatingHeart,
+                        i*100
+                    );
+
+                }
+
+
+            },
+            500
+        );
+
+    }
+);
+
+
+/* =====================================================
+   PHÁO HOA NÚT
+===================================================== */
+
+document
+    .getElementById(
+        "fireworkBtn"
+    )
+    .addEventListener(
+        "click",
+        function(){
+
+            playClick();
 
             for(
                 let i=0;
@@ -1902,94 +2535,24 @@ function openGift(){
                 setTimeout(
                     () => {
 
-                        explosion(
+                        createExplosion(
 
                             W *
-                            (.2 +
-                            Math.random()*.6),
+                            (
+                                .15 +
+                                Math.random()*.7
+                            ),
 
                             H *
-                            (.2 +
-                            Math.random()*.35)
+                            (
+                                .15 +
+                                Math.random()*.45
+                            )
 
                         );
 
                     },
-                    i*400
-                );
-
-            }
-
-
-            setTimeout(
-                automaticFirework,
-                3500
-            );
-
-
-            setInterval(
-                () => {
-
-                    if(opened)
-                        createHeart();
-
-                },
-                700
-            );
-
-        },
-        700
-    );
-}
-
-
-/* =========================================================
-   CLICK HỘP QUÀ
-========================================================= */
-
-document
-    .getElementById("gift")
-    .addEventListener(
-        "click",
-        openGift
-    );
-
-
-/* =========================================================
-   PHÁO HOA
-========================================================= */
-
-document
-    .getElementById("fireworkBtn")
-    .addEventListener(
-        "click",
-        () => {
-
-            clickSound();
-
-            for(
-                let i=0;
-                i<3;
-                i++
-            ){
-
-                setTimeout(
-                    () => {
-
-                        explosion(
-
-                            W *
-                            (.15 +
-                            Math.random()*.7),
-
-                            H *
-                            (.15 +
-                            Math.random()*.5)
-
-                        );
-
-                    },
-                    i*350
+                    i*300
                 );
 
             }
@@ -1998,9 +2561,103 @@ document
     );
 
 
-/* =========================================================
+/* =====================================================
+   BÓNG BAY
+===================================================== */
+
+function createBalloon(){
+
+    const balloon =
+        document.createElement(
+            "div"
+        );
+
+    balloon.className =
+        "balloon";
+
+    const colors = [
+        "#ff4d6d",
+        "#ff758f",
+        "#c77dff",
+        "#4cc9f0",
+        "#ffd166",
+        "#ff9f1c"
+    ];
+
+    balloon.style.background =
+        colors[
+            Math.floor(
+                Math.random() *
+                colors.length
+            )
+        ];
+
+    balloon.style.left =
+        Math.random()*90 +
+        "vw";
+
+    balloon.style.setProperty(
+        "--drift",
+        (
+            Math.random()*200-100
+        ) +
+        "px"
+    );
+
+    balloon.style.animationDuration =
+        (
+            5 +
+            Math.random()*5
+        ) +
+        "s";
+
+    document.body.appendChild(
+        balloon
+    );
+
+
+    setTimeout(
+        () => {
+
+            balloon.remove();
+
+        },
+        11000
+    );
+
+}
+
+
+document
+    .getElementById(
+        "balloonBtn"
+    )
+    .addEventListener(
+        "click",
+        function(){
+
+            playClick();
+
+            for(
+                let i=0;
+                i<15;
+                i++
+            ){
+
+                setTimeout(
+                    createBalloon,
+                    i*120
+                );
+
+            }
+
+        }
+    );
+
+
+/* =====================================================
    BÁNH
-========================================================= */
+===================================================== */
 
 const cakeModal =
     document.getElementById(
@@ -2009,72 +2666,83 @@ const cakeModal =
 
 
 document
-    .getElementById("cakeBtn")
+    .getElementById(
+        "cakeBtn"
+    )
     .addEventListener(
         "click",
-        () => {
+        function(){
 
-            clickSound();
+            playClick();
 
-            cakeModal.style.display =
-                "flex";
+            cakeModal.classList.add(
+                "show"
+            );
 
         }
     );
 
 
 document
-    .getElementById("closeCake")
+    .getElementById(
+        "closeCake"
+    )
     .addEventListener(
         "click",
-        () => {
+        function(){
 
-            cakeModal.style.display =
-                "none";
+            cakeModal.classList.remove(
+                "show"
+            );
 
         }
     );
 
 
-/* =========================================================
+/* =====================================================
    THỔI NẾN
-========================================================= */
+===================================================== */
 
 document
-    .getElementById("blowBtn")
+    .getElementById(
+        "blowBtn"
+    )
     .addEventListener(
         "click",
-        () => {
+        function(){
 
-            clickSound();
+            playClick();
 
-            document
-                .getElementById(
+            const flame =
+                document.getElementById(
                     "flame"
-                )
-                .style.display =
+                );
+
+            flame.style.display =
                 "none";
 
 
             for(
                 let i=0;
-                i<6;
+                i<5;
                 i++
             ){
 
                 setTimeout(
                     () => {
 
-                        explosion(
-
+                        createExplosion(
                             W *
-                            (.2 +
-                            Math.random()*.6),
+                            (
+                                .2 +
+                                Math.random()*.6
+                            ),
 
                             H *
-                            (.2 +
-                            Math.random()*.5)
-
+                            (
+                                .15 +
+                                Math.random()*.45
+                            )
                         );
 
                     },
@@ -2083,13 +2751,18 @@ document
 
             }
 
+
+            showToast(
+                "🎉 Điều ước đã được gửi lên vũ trụ!"
+            );
+
         }
     );
 
 
-/* =========================================================
-   THƯ
-========================================================= */
+/* =====================================================
+   LỜI CHÚC
+===================================================== */
 
 const letterModal =
     document.getElementById(
@@ -2098,54 +2771,60 @@ const letterModal =
 
 
 document
-    .getElementById("letterBtn")
+    .getElementById(
+        "letterBtn"
+    )
     .addEventListener(
         "click",
-        () => {
+        function(){
 
-            clickSound();
+            playClick();
 
-            letterModal.style.display =
-                "flex";
+            letterModal.classList.add(
+                "show"
+            );
 
         }
     );
 
 
 document
-    .getElementById("closeLetter")
+    .getElementById(
+        "closeLetter"
+    )
     .addEventListener(
         "click",
-        () => {
+        function(){
 
-            letterModal.style.display =
-                "none";
+            letterModal.classList.remove(
+                "show"
+            );
 
         }
     );
 
 
-/* =========================================================
+/* =====================================================
    ĐIỀU ƯỚC
-========================================================= */
+===================================================== */
 
 const wishes = [
 
-    "Mong bạn luôn có thật nhiều lý do để mỉm cười 💖",
+    "💖 Mong bạn luôn có thật nhiều lý do để mỉm cười.",
 
-    "Mong những điều bạn mong chờ sẽ sớm trở thành hiện thực ✨",
+    "✨ Mong những điều bạn mong chờ sẽ sớm trở thành hiện thực.",
 
-    "Mong tuổi mới mang đến thật nhiều may mắn 🍀",
+    "🍀 Mong tuổi mới mang đến thật nhiều may mắn.",
 
-    "Mong bạn gặp được những người thật lòng yêu thương bạn ❤️",
+    "❤️ Mong bạn luôn gặp những người thật lòng yêu thương mình.",
 
-    "Mong mỗi ngày của bạn đều có một điều đáng nhớ 🌸",
+    "🌸 Mong mỗi ngày đều có ít nhất một điều khiến bạn vui.",
 
-    "Mong bạn luôn đủ mạnh mẽ để theo đuổi điều mình muốn 🚀",
+    "🚀 Mong bạn đủ dũng khí để theo đuổi những điều mình muốn.",
 
-    "Mong tuổi mới thật rực rỡ như pháo hoa 🎆",
+    "🎆 Mong tuổi mới của bạn rực rỡ như pháo hoa.",
 
-    "Mong bạn luôn hạnh phúc theo cách của riêng mình 🥰"
+    "🥰 Mong bạn luôn hạnh phúc theo cách riêng của mình."
 
 ];
 
@@ -2153,12 +2832,14 @@ let wishIndex=0;
 
 
 document
-    .getElementById("loveBtn")
+    .getElementById(
+        "wishBtn"
+    )
     .addEventListener(
         "click",
-        () => {
+        function(){
 
-            clickSound();
+            playClick();
 
             wishIndex++;
 
@@ -2172,23 +2853,25 @@ document
             }
 
 
-            const wish =
+            const wishText =
                 document.getElementById(
-                    "wish"
+                    "wishText"
                 );
 
-            wish.style.opacity="0";
+            wishText.style.opacity =
+                "0";
 
 
             setTimeout(
                 () => {
 
-                    wish.textContent =
+                    wishText.textContent =
                         wishes[
                             wishIndex
                         ];
 
-                    wish.style.opacity="1";
+                    wishText.style.opacity =
+                        "1";
 
                 },
                 200
@@ -2197,11 +2880,14 @@ document
 
             for(
                 let i=0;
-                i<20;
+                i<15;
                 i++
             ){
 
-                createHeart();
+                setTimeout(
+                    createFloatingHeart,
+                    i*70
+                );
 
             }
 
@@ -2209,66 +2895,34 @@ document
     );
 
 
-/* =========================================================
-   CHƠI LẠI
-========================================================= */
+/* =====================================================
+   ÂM THANH ON/OFF
+===================================================== */
 
-document
-    .getElementById("replayBtn")
-    .addEventListener(
-        "click",
-        () => {
-
-            location.reload();
-
-        }
-    );
-
-
-/* =========================================================
-   ÂM THANH BẬT / TẮT
-========================================================= */
-
-const soundBtn =
+const soundButton =
     document.getElementById(
-        "soundBtn"
+        "soundButton"
     );
 
 
-function updateSoundIcon(){
-
-    soundBtn.textContent =
-        soundEnabled
-        ? "🔊"
-        : "🔇";
-
-}
-
-updateSoundIcon();
-
-
-soundBtn.addEventListener(
+soundButton.addEventListener(
     "click",
-    () => {
+    function(){
 
         soundEnabled =
             !soundEnabled;
 
-        localStorage.setItem(
-            "birthdaySound",
+        soundButton.textContent =
             soundEnabled
-            ? "on"
-            : "off"
-        );
-
-        updateSoundIcon();
+            ? "🔊"
+            : "🔇";
 
 
         if(soundEnabled){
 
             initAudio();
 
-            tone(
+            playTone(
                 600,
                 .12,
                 "sine",
@@ -2281,45 +2935,136 @@ soundBtn.addEventListener(
 );
 
 
-/* =========================================================
-   ĐỔI GIAO DIỆN
-========================================================= */
+/* =====================================================
+   CHƠI LẠI
+===================================================== */
 
 document
-    .getElementById("themeBtn")
+    .getElementById(
+        "replayBtn"
+    )
     .addEventListener(
         "click",
-        () => {
+        function(){
 
-            clickSound();
-
-            document.body
-                .classList.toggle(
-                    "light"
-                );
-
-            const light =
-                document.body
-                .classList
-                .contains("light");
-
-            document
-                .getElementById(
-                    "themeBtn"
-                )
-                .textContent =
-                light
-                ? "☀️"
-                : "🌙";
+            location.reload();
 
         }
     );
 
 
-/* =========================================================
+/* =====================================================
+   TOAST
+===================================================== */
+
+let toastTimer;
+
+
+function showToast(
+    message
+){
+
+    toast.textContent =
+        message;
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer =
+        setTimeout(
+            () => {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            3000
+        );
+
+}
+
+
+/* =====================================================
+   ĐÓNG MODAL KHI BẤM RA NGOÀI
+===================================================== */
+
+cakeModal.addEventListener(
+    "click",
+    function(e){
+
+        if(
+            e.target ===
+            cakeModal
+        ){
+
+            cakeModal.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+letterModal.addEventListener(
+    "click",
+    function(e){
+
+        if(
+            e.target ===
+            letterModal
+        ){
+
+            letterModal.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ESC ĐÓNG
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(
+            e.key ===
+            "Escape"
+        ){
+
+            cakeModal.classList.remove(
+                "show"
+            );
+
+            letterModal.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
    ĐỒNG HỒ ĐẾM NGƯỢC
    SINH NHẬT: 24/08/2026
-========================================================= */
+===================================================== */
 
 const birthday =
     new Date(
@@ -2333,7 +3078,8 @@ function updateClock(){
         new Date();
 
     let diff =
-        birthday - now;
+        birthday -
+        now;
 
 
     if(diff < 0){
@@ -2343,28 +3089,40 @@ function updateClock(){
     }
 
 
-    const day =
+    const days =
         Math.floor(
             diff /
-            (1000*60*60*24)
+            (
+                1000 *
+                60 *
+                60 *
+                24
+            )
         );
 
 
-    const hour =
+    const hours =
         Math.floor(
             diff /
-            (1000*60*60)
+            (
+                1000 *
+                60 *
+                60
+            )
         ) % 24;
 
 
-    const minute =
+    const minutes =
         Math.floor(
             diff /
-            (1000*60)
+            (
+                1000 *
+                60
+            )
         ) % 60;
 
 
-    const second =
+    const seconds =
         Math.floor(
             diff /
             1000
@@ -2372,42 +3130,82 @@ function updateClock(){
 
 
     document
-        .getElementById("days")
+        .getElementById(
+            "days"
+        )
         .textContent =
-        String(day)
-        .padStart(2,"0");
+        String(days)
+        .padStart(
+            2,
+            "0"
+        );
 
 
     document
-        .getElementById("hours")
+        .getElementById(
+            "hours"
+        )
         .textContent =
-        String(hour)
-        .padStart(2,"0");
+        String(hours)
+        .padStart(
+            2,
+            "0"
+        );
 
 
     document
-        .getElementById("minutes")
+        .getElementById(
+            "minutes"
+        )
         .textContent =
-        String(minute)
-        .padStart(2,"0");
+        String(minutes)
+        .padStart(
+            2,
+            "0"
+        );
 
 
     document
-        .getElementById("seconds")
+        .getElementById(
+            "seconds"
+        )
         .textContent =
-        String(second)
-        .padStart(2,"0");
+        String(seconds)
+        .padStart(
+            2,
+            "0"
+        );
 
 }
 
 
 updateClock();
 
-
 setInterval(
     updateClock,
     1000
 );
+
+
+/* =====================================================
+   CLICK CARD -> ÂM THANH
+===================================================== */
+
+document
+    .querySelector(
+        ".card-container"
+    )
+    .addEventListener(
+        "click",
+        function(){
+
+            initAudio();
+
+        },
+        {
+            once:true
+        }
+    );
 
 </script>
 
